@@ -14,8 +14,16 @@ public class GameObject {
         this.graphic = new Graphic(look);
     }
 
-    public void onLoop() {
+    public void onLoop(Player player) {
 
+    }
+
+    protected int getX() {
+        return x;
+    }
+
+    protected int getY() {
+        return y;
     }
 
     public void onDraw(Terminal terminal) {
