@@ -1,23 +1,18 @@
+import com.googlecode.lanterna.terminal.Terminal;
+
 public class GameObject {
     private int x;
     private int y;
-    private char look;
+    private Graphic graphic;
 
 
     protected GameObject(int x, int y, char look) {
         this.x = x;
         this.y = y;
-        this.look = look;
-    }
-    public int getX() {
-        return x;
+        this.graphic = new Graphic(look);
     }
 
-    public int getY() {
-        return y;
-    }
-
-    public char getLook() {
-        return look;
+    public void onDraw(Terminal terminal) {
+        graphic.draw(terminal, this.x, this.y);
     }
 }
