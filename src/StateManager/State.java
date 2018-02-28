@@ -1,7 +1,11 @@
+package StateManager;
+
+import Room.*;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.util.List;
+
 
 abstract public class State {
     private List<Room> rooms;

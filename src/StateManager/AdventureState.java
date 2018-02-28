@@ -1,3 +1,7 @@
+package StateManager;
+
+import GameObject.*;
+import Room.*;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.input.Key;
 

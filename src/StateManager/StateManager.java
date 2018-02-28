@@ -1,3 +1,5 @@
+package StateManager;
+
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.terminal.Terminal;
 
@@ -6,22 +8,22 @@ public class StateManager {
     private State combatState = new CombatState();
     private State currentState;
 
-    void onInit() {
+    public void onInit() {
         adventureState.onInit();
         combatState.onInit();
 
         changeCurrentState(1);
     }
 
-    void onInput(Key key) {
+    public void onInput(Key key) {
         currentState.onInput(key);
     }
 
-    void onLoop() {
+    public void onLoop() {
         currentState.onLoop();
     }
 
-    void onDraw(Terminal terminal) {
+    public void onDraw(Terminal terminal) {
         currentState.onDraw(terminal);
     }
 

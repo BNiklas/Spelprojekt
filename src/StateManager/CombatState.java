@@ -1,3 +1,5 @@
+package StateManager;
+
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.terminal.Terminal;
 

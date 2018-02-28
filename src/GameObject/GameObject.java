@@ -1,3 +1,5 @@
+package GameObject;
+
 import com.googlecode.lanterna.terminal.Terminal;
 
 public class GameObject {
