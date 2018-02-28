@@ -12,6 +12,10 @@ public class GameObject {
         this.graphic = new Graphic(look);
     }
 
+    public void onLoop() {
+
+    }
+
     public void onDraw(Terminal terminal) {
         graphic.draw(terminal, this.x, this.y);
     }
