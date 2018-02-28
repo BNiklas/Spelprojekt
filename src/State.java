@@ -10,4 +10,6 @@ abstract public class State {
     abstract public void onInput(Key key);
     abstract public void onLoop();
     abstract public void onDraw(Terminal terminal);
+    abstract public void enter();
+    abstract public void exit();
 }

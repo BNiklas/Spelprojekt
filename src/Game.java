@@ -7,13 +7,11 @@ import java.nio.charset.Charset;
 public class Game {
     private Terminal terminal;
     private boolean running;
-    private State adventureState;
+    private StateManager stateManager;
 
     public void run() {
         //init Terminal
         onInit();
-
-        State currentState = adventureState;
 
         //Gameloop
         while(running){
@@ -25,10 +23,10 @@ public class Game {
 
             Key key = terminal.readInput();
             if (key != null) {
-                currentState.onInput(key);
+                stateManager.onInput(key);
             }
-            currentState.onLoop();
-            currentState.onDraw(terminal);
+            stateManager.onLoop();
+            stateManager.onDraw(terminal);
         }
 
         onExit();
@@ -46,7 +44,7 @@ public class Game {
 
         running = true;
 
-        adventureState = new AdventureState();
-        adventureState.onInit();
+        stateManager = new StateManager();
+        stateManager.onInit();
     }
 }

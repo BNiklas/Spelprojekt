@@ -46,4 +46,14 @@ public class AdventureState extends State {
             room.onDraw(terminal);
         }
     }
+
+    @Override
+    public void enter() {
+
+    }
+
+    @Override
+    public void exit() {
+
+    }
 }
