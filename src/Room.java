@@ -17,7 +17,7 @@ public class Room {
 
     public void onLoop() {
         for (GameObject gameObject : gameObjects) {
-            gameObject.onLoop();
+            gameObject.onLoop((Player)gameObjects.get(0)); // TODO: 2018-02-28 Fix better 
         }
     }
 
