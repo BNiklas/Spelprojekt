@@ -4,12 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Room {
-    List<GameObject> gameObjects = new ArrayList<>();
-    Player player = new Player(15, 15, 'P');
+    private List<GameObject> gameObjects;
+
+    Room(Player player) {
+        this.gameObjects = new ArrayList<>();
+        gameObjects.add(player);
+    }
 
     public void onInit() {
-        gameObjects.add(player);
         gameObjects.add(new Monster(10, 10, 'M'));
+    }
+
+    public void onLoop() {
+        for (GameObject gameObject : gameObjects) {
+            gameObject.onLoop();
+        }
     }
 
     public void onDraw(Terminal terminal) {
