@@ -25,7 +25,7 @@ public class Game {
 
             Key key = terminal.readInput();
             if (key != null) {
-                currentState.onInput(terminal.readInput());
+                currentState.onInput(key);
             }
             currentState.onLoop();
             currentState.onDraw(terminal);
