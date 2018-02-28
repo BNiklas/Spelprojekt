@@ -17,16 +17,16 @@ public class Game {
 
         //Gameloop
         while(running){
-            Key key;
-            do{
-                try {
-                    Thread.sleep(5);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Key key = terminal.readInput();
+            if (key != null) {
                 currentState.onInput(terminal.readInput());
             }
-            while(key == null);
             currentState.onLoop();
             currentState.onDraw(terminal);
         }
