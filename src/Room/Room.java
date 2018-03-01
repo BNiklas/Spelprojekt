@@ -2,6 +2,7 @@ package Room;
 
 import GameObject.*;
 import Item.Valuable;
+import Item.Weapon;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.util.ArrayList;
@@ -46,6 +47,7 @@ public class Room {
     }
     private void addRandomItems(List<GameObject> gameObjects){
         gameObjects.addAll(Valuable.getRandomValuables(3));
+        gameObjects.addAll(Weapon.getRandomWeapons(2));
     }
     private void addMonsters(List<GameObject> gameObjects){
         gameObjects.addAll(Monster.getRandomAmountOfMonsters(4));
