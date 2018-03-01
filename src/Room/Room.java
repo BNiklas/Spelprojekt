@@ -7,25 +7,34 @@ import com.googlecode.lanterna.terminal.Terminal;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Room {
     private List<GameObject> gameObjects;
     private Player player;
 
+    public boolean wantsBackPortal = true;
+
     private static final int SCREEN_WIDTH = 70;
     private static final int SCREEN_HEIGHT = 30;
 
 
-    public Room(Player player) {
-        this.player = player;
+    public Room() {
         this.gameObjects = new ArrayList<>();
-        gameObjects.add(player);
+        Random rand = new Random();
+        gameObjects.add(new Door(rand.nextInt(SCREEN_WIDTH - 2) + 1, rand.nextInt(SCREEN_HEIGHT - 2) + 1));
         this.addMonsters(gameObjects);
         this.addRandomItems(gameObjects);
         this.addWalls(gameObjects);
         this.addHills(gameObjects);
         this.addLakes(gameObjects);
 
+    }
+
+    public void addBackPortal(Room oldRoom) {
+        Random rand = new Random();
+        wantsBackPortal = false;
+        gameObjects.add(new Door(rand.nextInt(SCREEN_WIDTH - 2) + 1, rand.nextInt(SCREEN_HEIGHT - 2) + 1, Terminal.Color.BLUE, oldRoom));
     }
 
     public static int getScreenWidth() {
@@ -36,9 +45,6 @@ public class Room {
         return SCREEN_HEIGHT;
     }
 
-    public void onInit() {
-        gameObjects.add(new Monster(10, 10, 'M'));
-    }
 
     public void onLoop() {
         for (GameObject gameObject : gameObjects) {
@@ -66,15 +72,36 @@ public class Room {
         List<Collision> collisions = new ArrayList<>();
         for (GameObject gameObject : gameObjects) {
             for (GameObject innerObject : gameObjects) {
+                boolean alreadyExists = false;
                 if (gameObject == innerObject) {
                     continue;
                 }
                 if (gameObject.getX() == innerObject.getX() && gameObject.getY() == innerObject.getY()) {
-                    collisions.add(new Collision(gameObject, innerObject));
+                    for (Collision collision : collisions) {
+                        if(collision.contains(gameObject, innerObject)) {
+                            alreadyExists = true;
+                        }
+                    }
+                    if(!alreadyExists) {
+                        collisions.add(new Collision(gameObject, innerObject));
+                    }
                 }
             }
         }
         return collisions;
+    }
+
+    public void onEnter(Player player) {
+        gameObjects.add(player);
+        this.player = player;
+        reDraw();
+    }
+
+    public Player onExit() {
+        gameObjects.remove(player);
+        Player temp = this.player;
+        this.player = null;
+        return temp;
     }
 
     private void addRandomItems(List<GameObject> gameObjects){

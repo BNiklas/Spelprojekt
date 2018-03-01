@@ -14,7 +14,6 @@ public class AdventureState extends State {
     public void onInit() {
         player = new Player(5, 5, 'P');
         rooms = new RoomManager(player);
-        rooms.onInit();
     }
 
     @Override

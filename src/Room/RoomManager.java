@@ -11,17 +11,14 @@ public class RoomManager {
 
     private List<Room> rooms;
     private Room currentRoom;
+    private boolean needsClean = false;
 
     public RoomManager(Player player) {
         rooms  = new ArrayList<>();
-        rooms.add(new Room(player));
-        currentRoom = rooms.get(0);
-    }
-
-    public void onInit() {
-        for (Room room : rooms) {
-            room.onInit();
-        }
+        currentRoom = new Room();
+        currentRoom.wantsBackPortal = false;
+        currentRoom.onEnter(player);
+        rooms.add(currentRoom);
     }
 
     public void onLoop() {
@@ -34,14 +31,27 @@ public class RoomManager {
         for (Collision collision : collisions) {
             collision.alert();
             if (collision.getObject1() instanceof Player && collision.getObject2() instanceof Door) {
-                currentRoom = ((Door) collision.getObject2()).getRoom();
+                swapRoom(((Door) collision.getObject2()).getRoom());
             } else if (collision.getObject1() instanceof Door && collision.getObject2() instanceof Player) {
-                currentRoom = ((Door) collision.getObject1()).getRoom();
+                swapRoom(((Door) collision.getObject1()).getRoom());
             }
         }
     }
 
+    private void swapRoom(Room newRoom) {
+        newRoom.onEnter(currentRoom.onExit());
+        if (newRoom.wantsBackPortal) {
+            newRoom.addBackPortal(currentRoom);
+        }
+        currentRoom = newRoom;
+        needsClean = true;
+    }
+
     public void onDraw(Terminal terminal) {
+        if (needsClean) {
+            terminal.clearScreen();
+            needsClean = false;
+        }
         currentRoom.onDraw(terminal);
     }
 
