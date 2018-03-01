@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Monster extends Chaser implements LoopUpdateable {
+public class Monster extends Chaser {
     public Monster(int x, int y, char look) {
         super(x, y, look);
         setSpeed(1);
