@@ -19,4 +19,32 @@ public class Graphic {
         terminal.moveCursor(x, y);
         terminal.putCharacter(' ');
     }
+
+    private static void printString(Terminal terminal, String input, int x, int y) {
+        char[] chars = input.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            terminal.moveCursor(i + x, y);
+            terminal.putCharacter(chars[i]);
+        }
+
+    }
+
+    private static void printHealthbar(Terminal terminal, int x, int y, int health) {
+
+        char charToPrint = '\u2588';
+        if (health < 10 && health > 0) {
+            health = 10;
+        }
+
+        for (int i = 0; i < health / 10; i++) {
+            terminal.applyForegroundColor(Terminal.Color.GREEN);
+            terminal.moveCursor(i + x, y);
+            terminal.putCharacter(charToPrint);
+        }
+        for (int i = health / 10; i < 10; i++) {
+            terminal.applyForegroundColor(Terminal.Color.RED);
+            terminal.moveCursor(i + x, y);
+            terminal.putCharacter(charToPrint);
+        }
+    }
 }

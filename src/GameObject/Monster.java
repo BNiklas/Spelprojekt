@@ -3,6 +3,7 @@ package GameObject;
 public class Monster extends Character {
     public Monster(int x, int y, char look) {
         super(x, y, look);
+        setSpeed(1);
     }
 
 
@@ -13,7 +14,7 @@ public class Monster extends Character {
     }
 
     private boolean lookFor(GameObject object) {
-        int searchRange = 3;
+        int searchRange = 5;
         if (Math.abs(this.getX() - object.getX()) < searchRange && Math.abs(this.getY() - object.getY()) < searchRange) {
             return true;
         }
@@ -22,13 +23,13 @@ public class Monster extends Character {
 
     private void chase(GameObject object) {
         if (this.getX() < object.getX()) {
-            move(1, 0);
+            move(this.getSpeed(), 0);
         } else if (this.getX() > object.getX()) {
-            move(-1, 0);
+            move(-this.getSpeed(), 0);
         } else if (this.getY() < object.getY()) {
-            move(0, 1);
+            move(0, this.getSpeed());
         } else if(this.getY() > object.getY()){
-            move(-1, 0);
+            move(0, -this.getSpeed());
         }
     }
 
