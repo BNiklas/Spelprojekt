@@ -11,14 +11,13 @@ public class Character extends GameObject {
     private List<Item> inventory;
 
     protected Character(int x, int y, char look) {
-        super(x, y, look, false);
-        stamina = 9;
-        health = 9;
-        inventory = new ArrayList<>();
+        this(x, y, look, false);
     }
 
     protected Character(int x, int y, char look, boolean traversable) {
         super(x, y, look, traversable);
+        stamina = 9;
+        health = 9;
         inventory = new ArrayList<>();
     }
 
