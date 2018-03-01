@@ -5,21 +5,16 @@ import Room.*;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.input.Key;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class AdventureState extends State {
 
-    private List<Room> rooms = new ArrayList<>();
+    private RoomManager rooms;
     private Player player;
 
     @Override
     public void onInit() {
         player = new Player(15, 15, 'P');
-        rooms.add(new Room(player));
-        for (Room room : rooms) {
-            room.onInit();
-        }
+        rooms = new RoomManager(player);
+        rooms.onInit();
     }
 
     @Override
@@ -40,21 +35,17 @@ public class AdventureState extends State {
 
     @Override
     public void onLoop() {
-        for (Room room : rooms) {
-            room.onLoop();
-        }
+        rooms.onLoop();
     }
 
     @Override
     public void onDraw(Terminal terminal) {
-        for (Room room : rooms) {
-            room.onDraw(terminal);
-        }
+        rooms.onDraw(terminal);
     }
 
     @Override
     public void enter() {
-
+        rooms.reDraw();
     }
 
     @Override

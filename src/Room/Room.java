@@ -11,8 +11,8 @@ public class Room {
     private List<GameObject> gameObjects;
     Player player;
 
-    private static final int SCREENWIDTH = 70;
-    private static final int SCREENHEIGHT = 30;
+    private static final int SCREEN_WIDTH = 70;
+    private static final int SCREEN_HEIGHT = 30;
 
 
     public Room(Player player) {
@@ -24,11 +24,11 @@ public class Room {
 
     }
     public static int getScreenwidth() {
-        return SCREENWIDTH;
+        return SCREEN_WIDTH;
     }
 
     public static int getScreenheight() {
-        return SCREENHEIGHT;
+        return SCREEN_HEIGHT;
     }
 
     public void onInit() {
@@ -51,6 +51,28 @@ public class Room {
             gameObject.onDraw(terminal);
         }
     }
+
+    public void reDraw() {
+        for (GameObject gameObject : gameObjects) {
+            gameObject.needsToDraw();
+        }
+    }
+
+    public List<Collision> checkCollisions() {
+        List<Collision> collisions = new ArrayList<>();
+        for (GameObject gameObject : gameObjects) {
+            for (GameObject innerObject : gameObjects) {
+                if (gameObject == innerObject) {
+                    continue;
+                }
+                if (gameObject.getX() == innerObject.getX() && gameObject.getY() == innerObject.getY()) {
+                    collisions.add(new Collision(gameObject, innerObject));
+                }
+            }
+        }
+        return collisions;
+    }
+
     private void addRandomItems(List<GameObject> gameObjects){
         gameObjects.addAll(Valuable.getRandomValuables(3));
     }

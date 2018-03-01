@@ -1,11 +1,14 @@
 package GameObject;
 
 public class Character extends GameObject {
-    //TODO Add character specific things
     private int speed;
 
     protected Character(int x, int y, char look) {
-        super(x, y, look);
+        super(x, y, look, false);
+    }
+
+    protected Character(int x, int y, char look, boolean traversable) {
+        super(x, y, look, traversable);
     }
 
     protected int getSpeed(){

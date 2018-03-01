@@ -1,4 +1,5 @@
 package GameObject;
 
-public class Updateable {
+public interface LoopUpdateable {
+    void onLoop();
 }
