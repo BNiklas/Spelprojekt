@@ -1,6 +1,7 @@
 package Item;
 
 import Room.*;
+import com.googlecode.lanterna.terminal.Terminal;
 
 import java.util.*;
 
@@ -14,14 +15,19 @@ public class Valuable extends Item {
         super(x, y, look, value, name);
     }
 
+    public Valuable(int x, int y, char look, Terminal.Color color, int value, String name) {
+        super(x, y, look, color, value, name);
+    }
+
     public static List<Valuable> getRandomValuables(int bound) {
         ArrayList<Valuable> valuables = new ArrayList<>();
         Random rand = new Random();
         int padding = 3;
 
         for (int i = rand.nextInt(bound); i < bound; i++) {
-            valuables.add(new Valuable(getRandomNumberInRange(padding, (Room.getScreenwidth() - padding)),
-                    getRandomNumberInRange(padding, (Room.getScreenheight() - padding)), '$', rand.nextInt(50), getRandomValuableName()));
+            valuables.add(new Valuable(getRandomNumberInRange(padding, (Room.getScreenWidth() - padding)),
+                    getRandomNumberInRange(padding, (Room.getScreenHeight() - padding)), '$', Terminal.Color.YELLOW,
+                    rand.nextInt(50), getRandomValuableName()));
 
         }
         return valuables;

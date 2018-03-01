@@ -4,14 +4,21 @@ import com.googlecode.lanterna.terminal.Terminal;
 
 public class Graphic {
     private char graphic;
+    private Terminal.Color color;
 
     Graphic(char graphic) {
         this.graphic = graphic;
+        this.color = Terminal.Color.WHITE;
+    }
+    Graphic(char graphic, Terminal.Color color){
+        this.graphic = graphic;
+        this.color = color;
     }
 
     public void draw(Terminal terminal, int x, int y, int xOld, int yOld) {
         erase(terminal, xOld, yOld);
         terminal.moveCursor(x, y);
+        terminal.applyForegroundColor(color);
         terminal.putCharacter(graphic);
     }
 

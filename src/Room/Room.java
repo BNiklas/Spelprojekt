@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Room {
     private List<GameObject> gameObjects;
-    Player player;
+    private Player player;
 
     private static final int SCREEN_WIDTH = 70;
     private static final int SCREEN_HEIGHT = 30;
@@ -23,12 +23,16 @@ public class Room {
         this.addMonsters(gameObjects);
         this.addRandomItems(gameObjects);
         this.addWalls(gameObjects);
+        this.addHills(gameObjects);
+        this.addLakes(gameObjects);
+
     }
-    public static int getScreenwidth() {
+
+    public static int getScreenWidth() {
         return SCREEN_WIDTH;
     }
 
-    public static int getScreenheight() {
+    public static int getScreenHeight() {
         return SCREEN_HEIGHT;
     }
 
@@ -41,6 +45,7 @@ public class Room {
             if (gameObject instanceof Chaser) {
                 ((Chaser) gameObject).updateChaseTarget(player);
             }
+
             gameObject.onLoop();
         }
     }
@@ -79,16 +84,14 @@ public class Room {
     private void addMonsters(List<GameObject> gameObjects){
         gameObjects.addAll(Monster.getRandomAmountOfMonsters(4));
     }
-    private void addWalls(List<GameObject> gameObjects){
-        List<Wall> walls = new ArrayList<>();
-        for(int x = 0; x <= SCREEN_WIDTH; x++){
-            walls.add(new Wall(x, SCREEN_HEIGHT));
-            walls.add(new Wall(x, 0));
-        }
-        for(int y = 0; y <= SCREEN_HEIGHT; y++){
-            walls.add(new Wall(SCREEN_WIDTH, y));
-            walls.add(new Wall(0, y));
-        }
-        gameObjects.addAll(walls);
+
+    private void addHills(List<GameObject> gameObjects){
+        gameObjects.addAll(Hill.getHills());
     }
+
+    private void addWalls(List<GameObject> gameObjects){
+        gameObjects.addAll(Wall.getWalls());
+    }
+
+    private void addLakes(List<GameObject> gameObjects){ gameObjects.addAll(Lake.getLake()); }
 }

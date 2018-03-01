@@ -3,6 +3,7 @@ package GameObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import Room.Room;
 
 public class Monster extends Chaser {
     String type;
@@ -14,8 +15,14 @@ public class Monster extends Chaser {
         setSpeed(1);
     }
 
+    public Monster(int x, int y, char look, boolean traversable) {
+        super(x, y, look, traversable);
+    }
+
     @Override
     public void onLoop() {
+        super.onLoop();
+
         if (lookFor(target)) {
             chase(target);
         }
@@ -43,12 +50,10 @@ public class Monster extends Chaser {
     public static List<Monster> getRandomAmountOfMonsters(int bound){
         ArrayList<Monster> monsters = new ArrayList<>();
         int padding = 10;
-        int screenWidth = 70;
-        int screenHeight = 30;
         Random rand = new Random();
         for(int i = rand.nextInt(bound); i < bound; i++){
-            monsters.add(new Monster(getRandomNumberInRange(padding, (screenWidth - padding)),
-                    getRandomNumberInRange(padding, (screenHeight - padding)), 'M'));
+            monsters.add(new Monster(getRandomNumberInRange(padding, (Room.getScreenWidth() - padding)),
+                    getRandomNumberInRange(padding, (Room.getScreenHeight() - padding)), 'M'));
         }
         return monsters;
     }
