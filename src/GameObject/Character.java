@@ -31,7 +31,6 @@ public class Character extends GameObject {
     protected void takeItem(Item item){
         inventory.add(item);
         item.pickUp();
-        System.out.println(item.toString());
     }
     protected void setSpeed(int speed){
         if(speed < 0){
