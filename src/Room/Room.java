@@ -22,6 +22,7 @@ public class Room {
         gameObjects.add(player);
         this.addMonsters(gameObjects);
         this.addRandomItems(gameObjects);
+        this.addWalls(gameObjects);
     }
     public static int getScreenwidth() {
         return SCREEN_WIDTH;
@@ -74,10 +75,22 @@ public class Room {
     }
 
     private void addRandomItems(List<GameObject> gameObjects){
-        gameObjects.addAll(Valuable.getRandomValuables(3));
+        gameObjects.addAll(Valuable.getRandomValuables(6));
         gameObjects.addAll(Weapon.getRandomWeapons(2));
     }
     private void addMonsters(List<GameObject> gameObjects){
         gameObjects.addAll(Monster.getRandomAmountOfMonsters(4));
+    }
+    private void addWalls(List<GameObject> gameObjects){
+        List<Wall> walls = new ArrayList<>();
+        for(int x = 0; x <= SCREEN_WIDTH; x++){
+            walls.add(new Wall(x, SCREEN_HEIGHT));
+            walls.add(new Wall(x, 0));
+        }
+        for(int y = 0; y <= SCREEN_HEIGHT; y++){
+            walls.add(new Wall(SCREEN_WIDTH, y));
+            walls.add(new Wall(0, y));
+        }
+        gameObjects.addAll(walls);
     }
 }

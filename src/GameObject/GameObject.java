@@ -17,6 +17,9 @@ public class GameObject {
         this.graphic = new Graphic(look);
         this.traversable = traversable;
     }
+    public GameObject(){
+
+    }
 
     public int getX() {
         return x;
