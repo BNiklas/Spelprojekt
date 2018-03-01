@@ -24,6 +24,8 @@ public class Room {
         this.addRandomItems(gameObjects);
         this.addWalls(gameObjects);
         this.addHills(gameObjects);
+        this.addLakes(gameObjects);
+
     }
 
     public static int getScreenWidth() {
@@ -90,4 +92,6 @@ public class Room {
     private void addWalls(List<GameObject> gameObjects){
         gameObjects.addAll(Wall.getWalls());
     }
+
+    private void addLakes(List<GameObject> gameObjects){ gameObjects.addAll(Lake.getLake()); }
 }

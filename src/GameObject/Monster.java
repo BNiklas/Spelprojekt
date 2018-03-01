@@ -6,8 +6,12 @@ import java.util.Random;
 import Room.Room;
 
 public class Monster extends Chaser {
+    String type;
+    String[] types={"Skeleton","Goblin"};
     public Monster(int x, int y, char look) {
-        super(x, y, look, false);
+        super(x, y, look);
+        Random rand = new Random();
+        this.type=types[rand.nextInt(2)];
         setSpeed(1);
     }
 
@@ -60,6 +64,10 @@ public class Monster extends Chaser {
             randomNum = rand.nextInt(max);
         }
         return randomNum;
+    }
+
+    public String getType(){
+        return type;
     }
 
 }
