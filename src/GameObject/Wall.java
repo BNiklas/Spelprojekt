@@ -18,7 +18,7 @@ public class Wall extends Obstacle{
             walls.add(new Wall(x, Room.getScreenHeight() - 1));
             walls.add(new Wall(x, 0));
         }
-        for(int y = 0; y < Room.getScreenHeight(); y++){
+        for(int y = 1; y < Room.getScreenHeight() - 1; y++){
             walls.add(new Wall(Room.getScreenWidth(), y));
             walls.add(new Wall(0, y));
         }

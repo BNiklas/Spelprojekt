@@ -1,5 +1,7 @@
 package GameObject;
 
+import Item.Item;
+
 public class Player extends Character {
     private int xWantedChange;
     private int yWantedChange;
@@ -22,5 +24,13 @@ public class Player extends Character {
     public void onMove(int changeX, int changeY) {
         xWantedChange = changeX;
         yWantedChange = changeY;
+    }
+
+    @Override
+    public void onCollide(GameObject object) {
+        super.onCollide(object);
+        if (object instanceof Item) {
+            takeItem((Item) object);
+        }
     }
 }

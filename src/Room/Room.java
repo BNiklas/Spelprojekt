@@ -86,7 +86,7 @@ public class Room {
     private void addHills(List<GameObject> gameObjects){
         gameObjects.addAll(Hill.getHills());
     }
-    
+
     private void addWalls(List<GameObject> gameObjects){
         gameObjects.addAll(Wall.getWalls());
     }
