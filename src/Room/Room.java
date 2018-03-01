@@ -20,9 +20,8 @@ public class Room {
         this.player = player;
         this.gameObjects = new ArrayList<>();
         gameObjects.add(player);
-    }
-    public Room(Player player, List<GameObject> gameObjects){
-
+        this.addMonsters(gameObjects);
+        this.addRandomItems(gameObjects);
     }
     public static int getScreenwidth() {
         return SCREEN_WIDTH;
