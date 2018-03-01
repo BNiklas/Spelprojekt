@@ -35,7 +35,7 @@ public class RoomManager {
             collision.alert();
             if (collision.getObject1() instanceof Player && collision.getObject2() instanceof Door) {
                 currentRoom = ((Door) collision.getObject2()).getRoom();
-            } else if (collision.getObject1() instanceof Player && collision.getObject2() instanceof Door) {
+            } else if (collision.getObject1() instanceof Door && collision.getObject2() instanceof Player) {
                 currentRoom = ((Door) collision.getObject1()).getRoom();
             }
         }

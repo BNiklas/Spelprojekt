@@ -6,12 +6,18 @@ import java.util.Random;
 
 public class Monster extends Chaser {
     public Monster(int x, int y, char look) {
-        super(x, y, look);
+        super(x, y, look, false);
         setSpeed(1);
+    }
+
+    public Monster(int x, int y, char look, boolean traversable) {
+        super(x, y, look, traversable);
     }
 
     @Override
     public void onLoop() {
+        super.onLoop();
+
         if (lookFor(target)) {
             chase(target);
         }
