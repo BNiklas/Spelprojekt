@@ -20,7 +20,7 @@ public class Graphic {
         terminal.putCharacter(' ');
     }
 
-    private static void printString(Terminal terminal, String input, int x, int y) {
+    public static void printString(Terminal terminal, String input, int x, int y) {
         char[] chars = input.toCharArray();
         for (int i = 0; i < chars.length; i++) {
             terminal.moveCursor(i + x, y);
@@ -29,7 +29,7 @@ public class Graphic {
 
     }
 
-    private static void printHealthbar(Terminal terminal, int x, int y, int health) {
+    public static void printHealthbar(Terminal terminal, int x, int y, int health) {
 
         char charToPrint = '\u2588';
         if (health < 10 && health > 0) {

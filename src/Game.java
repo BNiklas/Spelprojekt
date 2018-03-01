@@ -28,7 +28,7 @@ public class Game {
                 stateManager.onInput(key);
             }
             stateManager.onLoop();
-            stateManager.onDraw(terminal);
+            stateManager.onDraw();
         }
 
         onExit();
@@ -47,6 +47,6 @@ public class Game {
         running = true;
 
         stateManager = new StateManager();
-        stateManager.onInit();
+        stateManager.onInit(terminal);
     }
 }
