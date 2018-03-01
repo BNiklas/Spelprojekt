@@ -1,6 +1,7 @@
 package Item;
 
 import GameObject.GameObject;
+import com.googlecode.lanterna.terminal.Terminal;
 
 public abstract class Item extends GameObject {
     private int value;
@@ -20,6 +21,12 @@ public abstract class Item extends GameObject {
 
     public Item(int x, int y, char look, int value, String name) {
         super(x, y, look, true);
+        this.value = value;
+        this.name = name;
+    }
+
+    public Item(int x, int y, char look, Terminal.Color color, int value, String name) {
+        super(x, y, look, color, true);
         this.value = value;
         this.name = name;
     }
