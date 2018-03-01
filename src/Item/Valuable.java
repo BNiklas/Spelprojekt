@@ -2,6 +2,7 @@ package Item;
 
 import Room.*;
 import com.googlecode.lanterna.terminal.Terminal;
+import GameObject.Helper;
 
 import java.util.*;
 
@@ -25,23 +26,13 @@ public class Valuable extends Item {
         int padding = 3;
 
         for (int i = rand.nextInt(bound); i < bound; i++) {
-            valuables.add(new Valuable(getRandomNumberInRange(padding, (Room.getScreenwidth() - padding)),
-                    getRandomNumberInRange(padding, (Room.getScreenheight() - padding)), '$', Terminal.Color.YELLOW,
+            valuables.add(new Valuable(Helper.getRandomNumberInRange(padding, (Room.getScreenWidth() - padding)),
+                    Helper.getRandomNumberInRange(padding, (Room.getScreenHeight() - padding)), '$', Terminal.Color.YELLOW,
                     rand.nextInt(50), getRandomValuableName()));
 
         }
         return valuables;
     }
-
-    private static int getRandomNumberInRange(int min, int max) {
-        Random rand = new Random();
-        int randomNum = Integer.MIN_VALUE;
-        while (randomNum < min) {
-            randomNum = rand.nextInt(max);
-        }
-        return randomNum;
-    }
-
     private static String getRandomValuableName() {
         Random rand = new Random();
         return VALUABLE_NAMES.get(rand.nextInt(VALUABLE_NAMES.size()));
