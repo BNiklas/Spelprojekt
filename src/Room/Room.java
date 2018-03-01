@@ -41,9 +41,7 @@ public class Room {
             if (gameObject instanceof Chaser) {
                 ((Chaser) gameObject).updateChaseTarget(player);
             }
-            if (gameObject instanceof LoopUpdateable) {
-                ((LoopUpdateable) gameObject).onLoop();
-            }
+            gameObject.onLoop();
         }
     }
 
