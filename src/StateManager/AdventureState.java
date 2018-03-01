@@ -33,7 +33,8 @@ public class AdventureState extends State {
         } else if (key.getKind() == Key.Kind.ArrowRight) {
             player.onMove(1, 0);
         } else  if (key.getCharacter() == ' ') {
-            System.out.println("interacting");
+            exitInstructions = new StateInstruction(States.MENU_STATE);
+            hasExitInstructions = true;
         }
     }
 

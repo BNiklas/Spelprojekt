@@ -25,6 +25,7 @@ abstract public class State {
     }
 
     public StateInstruction getExitInstructions() {
+        hasExitInstructions = false;
         StateInstruction temp = exitInstructions;
         exitInstructions = null;
         return temp;
