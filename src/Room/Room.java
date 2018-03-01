@@ -82,10 +82,10 @@ public class Room {
     private void addWalls(List<GameObject> gameObjects){
         List<Wall> walls = new ArrayList<>();
         for(int x = 0; x <= SCREEN_WIDTH; x++){
-            walls.add(new Wall(x, SCREEN_HEIGHT));
+            walls.add(new Wall(x, SCREEN_HEIGHT - 1));
             walls.add(new Wall(x, 0));
         }
-        for(int y = 0; y <= SCREEN_HEIGHT; y++){
+        for(int y = 0; y < SCREEN_HEIGHT; y++){
             walls.add(new Wall(SCREEN_WIDTH, y));
             walls.add(new Wall(0, y));
         }
