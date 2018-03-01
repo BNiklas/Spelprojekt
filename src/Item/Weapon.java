@@ -1,10 +1,10 @@
 package Item;
 
 import Room.Room;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import GameObject.Helper;
 
 public class Weapon extends Item {
 
@@ -30,20 +30,10 @@ public class Weapon extends Item {
         int padding = 3;
 
         for (int i = rand.nextInt(bound); i < bound; i++) {
-            valuables.add(new Weapon(getRandomNumberInRange(padding, (Room.getScreenWidth() - padding)),
-                    getRandomNumberInRange(padding, (Room.getScreenHeight() - padding)), '\u2020',
+            valuables.add(new Weapon(Helper.getRandomNumberInRange(padding, (Room.getScreenWidth() - padding)),
+                    Helper.getRandomNumberInRange(padding, (Room.getScreenHeight() - padding)), '\u2020',
                     rand.nextInt(30), "Weapon", rand.nextInt(10)));
         }
         return valuables;
     }
-
-    private static int getRandomNumberInRange(int min, int max) {
-        Random rand = new Random();
-        int randomNum = Integer.MIN_VALUE;
-        while (randomNum < min) {
-            randomNum = rand.nextInt(max);
-        }
-        return randomNum;
-    }
-
 }
