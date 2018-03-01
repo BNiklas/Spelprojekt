@@ -8,8 +8,10 @@ import java.util.List;
 
 public class Room {
     private List<GameObject> gameObjects;
+    Player player;
 
     public Room(Player player) {
+        this.player = player;
         this.gameObjects = new ArrayList<>();
         gameObjects.add(player);
     }
@@ -20,7 +22,12 @@ public class Room {
 
     public void onLoop() {
         for (GameObject gameObject : gameObjects) {
-            gameObject.onLoop((Player)gameObjects.get(0)); // TODO: 2018-02-28 Fix better
+            if (gameObject instanceof Chaser) {
+                ((Chaser) gameObject).updateChaseTarget(player);
+            }
+            if (gameObject instanceof LoopUpdateable) {
+                ((LoopUpdateable) gameObject).onLoop();
+            }
         }
     }
 

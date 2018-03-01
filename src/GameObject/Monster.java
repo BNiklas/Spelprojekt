@@ -1,15 +1,16 @@
 package GameObject;
 
-public class Monster extends Character {
+public class Monster extends Chaser implements LoopUpdateable {
+
     public Monster(int x, int y, char look) {
         super(x, y, look);
         setSpeed(1);
     }
 
-
-    public void onLoop(Player player) {
-        if (lookFor(player)) {
-            chase(player);
+    @Override
+    public void onLoop() {
+        if (lookFor(target)) {
+            chase(target);
         }
     }
 
