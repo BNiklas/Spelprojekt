@@ -4,24 +4,11 @@ import Room.*;
 
 import java.util.*;
 
-import static java.util.Map.entry;
 
 public class Valuable extends Item {
-    private static final Map<String, Integer> values = Map.ofEntries(
-            entry("Bronze piece", 1),
-            entry("Silver piece", 5),
-            entry("Ruby", 15),
-            entry("Diamond", 50),
-            entry("Gold piece", 10),
-            entry("Emerald", 25),
-            entry("Silver plate", 15),
-            entry("Tanzanite", 30),
-            entry("Lazurite", 35),
-            entry("Peridot", 20),
-            entry("Nephrite", 40),
-            entry("Malachite", 45),
-            entry("Charoite", 17)
-    );
+    private static final ArrayList<String> VALUABLE_NAMES = new ArrayList<String>(Arrays.asList(
+            "Bronze piece", "Silver piece", "Ruby", "Diamond", "Gold piece", "Emerald", "Silver plate", "Tanzanite",
+            "Lazurite", "Peridot", "Nephrite", "Malachite", "Charoite"));
 
     private Valuable(int x, int y, char look, int value, String name) {
         super(x, y, look, value, name);
@@ -34,7 +21,7 @@ public class Valuable extends Item {
 
         for (int i = rand.nextInt(bound); i < bound; i++) {
             valuables.add(new Valuable(getRandomNumberInRange(padding, (Room.getScreenwidth() - padding)),
-                    getRandomNumberInRange(padding, (Room.getScreenheight() - padding)), '$', 0 , "default"));
+                    getRandomNumberInRange(padding, (Room.getScreenheight() - padding)), '$', rand.nextInt(50), getRandomValuableName()));
 
         }
         return valuables;
@@ -48,8 +35,10 @@ public class Valuable extends Item {
         }
         return randomNum;
     }
-    private static Valuable getRandomValuable(){
-        return null;
+
+    private static String getRandomValuableName() {
+        Random rand = new Random();
+        return VALUABLE_NAMES.get(rand.nextInt(VALUABLE_NAMES.size()));
     }
 
 
