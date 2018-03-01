@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Monster extends Chaser {
     public Monster(int x, int y, char look) {
-        super(x, y, look, false);
+        super(x, y, look, true);
         setSpeed(1);
     }
 
@@ -25,6 +25,9 @@ public class Monster extends Chaser {
 
     private boolean lookFor(GameObject object) {
         int searchRange = 5;
+        if (object == null) {
+            return false;
+        }
         if (Math.abs(this.getX() - object.getX()) < searchRange && Math.abs(this.getY() - object.getY()) < searchRange) {
             return true;
         }
