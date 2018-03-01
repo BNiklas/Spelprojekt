@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Room {
     private List<GameObject> gameObjects;
-    Player player;
+    private Player player;
 
     private static final int SCREEN_WIDTH = 70;
     private static final int SCREEN_HEIGHT = 30;
@@ -41,6 +41,7 @@ public class Room {
             if (gameObject instanceof Chaser) {
                 ((Chaser) gameObject).updateChaseTarget(player);
             }
+
             gameObject.onLoop();
         }
     }

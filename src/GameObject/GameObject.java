@@ -10,7 +10,7 @@ public class GameObject {
     private Graphic graphic;
     private boolean needsDraw = false;
     private boolean traversable;
-    private boolean justMoved;
+    protected boolean justMoved;
 
     public GameObject(int x, int y, char look, boolean traversable) {
         this.x = xOld = x;
@@ -49,10 +49,10 @@ public class GameObject {
 
     public void onCollide(GameObject object) {
         if (!object.isTraversable()) {
-            if (justMoved) {
-                x = xOld;
-                y = yOld;
-                needsDraw = true;
+            if (this.justMoved) {
+                this.x = this.xOld;
+                this.y = this.yOld;
+                this.needsDraw = true;
             }
         }
     }
