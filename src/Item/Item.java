@@ -1,16 +1,26 @@
 package Item;
 
-public abstract class Item {
+import GameObject.GameObject;
+
+public abstract class Item extends GameObject {
     private int value;
     private String name;
 
     public Item() {
+        super(0, 0, 'I');
         this.name="";
         this.value = 0;
     }
 
     public Item(int value, String name) {
+        super(0, 0, 'I');
         setValue(value);
+        this.name = name;
+    }
+
+    public Item(int x, int y, char look, int value, String name) {
+        super(x, y, look);
+        this.value = value;
         this.name = name;
     }
 
