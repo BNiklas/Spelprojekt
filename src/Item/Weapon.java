@@ -30,8 +30,8 @@ public class Weapon extends Item {
         int padding = 3;
 
         for (int i = rand.nextInt(bound); i < bound; i++) {
-            valuables.add(new Weapon(getRandomNumberInRange(padding, (Room.getScreenwidth() - padding)),
-                    getRandomNumberInRange(padding, (Room.getScreenheight() - padding)), '\u2020',
+            valuables.add(new Weapon(getRandomNumberInRange(padding, (Room.getScreenWidth() - padding)),
+                    getRandomNumberInRange(padding, (Room.getScreenHeight() - padding)), '\u2020',
                     rand.nextInt(30), "Weapon", rand.nextInt(10)));
         }
         return valuables;

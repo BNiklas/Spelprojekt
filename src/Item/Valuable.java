@@ -25,8 +25,8 @@ public class Valuable extends Item {
         int padding = 3;
 
         for (int i = rand.nextInt(bound); i < bound; i++) {
-            valuables.add(new Valuable(getRandomNumberInRange(padding, (Room.getScreenwidth() - padding)),
-                    getRandomNumberInRange(padding, (Room.getScreenheight() - padding)), '$', Terminal.Color.YELLOW,
+            valuables.add(new Valuable(getRandomNumberInRange(padding, (Room.getScreenWidth() - padding)),
+                    getRandomNumberInRange(padding, (Room.getScreenHeight() - padding)), '$', Terminal.Color.YELLOW,
                     rand.nextInt(50), getRandomValuableName()));
 
         }

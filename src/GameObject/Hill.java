@@ -1,30 +1,40 @@
 package GameObject;
 
+import Room.Room;
+import com.googlecode.lanterna.terminal.Terminal;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Hill extends Obstacle{
+public class Hill extends Obstacle {
     public Hill(int x, int y) {
-        super(x, y, '\u0394', false);
+        super(x, y, '\u0394', Terminal.Color.RED, false);
     }
 
 
-   /* public static List<Hill> getHills()
+    public static List<Hill> getHills() {
+        ArrayList<Hill> hills = new ArrayList<>();
 
-
-
-
-
-    public static List<Monster> getRandomAmountOfMonsters(int bound){
-        ArrayList<Monster> monsters = new ArrayList<>();
-        int padding = 10;
-        int screenWidth = 70;
-        int screenHeight = 30;
         Random rand = new Random();
-        for(int i = rand.nextInt(bound); i < bound; i++){
-            monsters.add(new Monster(getRandomNumberInRange(padding, (screenWidth - padding)),
-                    getRandomNumberInRange(padding, (screenHeight - padding)), 'M'));
+        int startX = getRandomNumberInRange(1, Room.getScreenWidth() - 2);
+        int startY = getRandomNumberInRange(1, Room.getScreenHeight() - 2);
+        for (int x = startX; x < startX + 2; x++) {
+            for (int y = startY; y < startY + 2; y++) {
+                hills.add(new Hill(x, y));
+            }
         }
-        return monsters;*/
+        return hills;
+
+    }
+
+    private static int getRandomNumberInRange(int min, int max) {
+        Random rand = new Random();
+        int randomNum = Integer.MIN_VALUE;
+        while (randomNum < min) {
+            randomNum = rand.nextInt(max);
+        }
+        return randomNum;
+    }
+
 }
