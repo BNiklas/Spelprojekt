@@ -9,7 +9,7 @@ import com.googlecode.lanterna.input.Key;
 import Item.*;
 
 public class AdventureState extends State {
-
+    private static final int TEXT_X = 72;
     private RoomManager rooms;
     private Player player;
 
@@ -37,11 +37,11 @@ public class AdventureState extends State {
 
     private void printAdventureText(Terminal terminal) {
         Graphic.printString(terminal, "Health: " + player.getHealth(), 75, 5, Terminal.Color.GREEN);
-        Graphic.printHealthbar(terminal, 72, 6, player.getHealth());
-        Graphic.printString(terminal, "Inventory: ", 72, 10, Terminal.Color.GREEN);
+        Graphic.printHealthbar(terminal, TEXT_X, 6, player.getHealth());
+        Graphic.printString(terminal, "Inventory: ", TEXT_X, 10, Terminal.Color.GREEN);
         int position = 11;
         for (Item item : player.getInventory()) {
-            Graphic.printString(terminal, item.getName() + ", Value: " + item.getValue(), 72, position);
+            Graphic.printString(terminal, item.getName() + ", Value: " + item.getValue(), TEXT_X, position);
             position++;
         }
     }
