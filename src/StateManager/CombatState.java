@@ -28,6 +28,7 @@ public class CombatState extends State {
 
     public void setFighters(GameObject player, GameObject monster) {
         this.player = (Player) player;
+        ((Player) player).setStamina(9);
         this.enemy = (Monster) monster;
     }
 
