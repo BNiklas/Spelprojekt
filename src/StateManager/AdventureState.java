@@ -35,6 +35,12 @@ public class AdventureState extends State {
     @Override
     public void onLoop() {
         rooms.onLoop();
+
+        if (rooms.instructionsToRelay != null) {
+            exitInstructions = rooms.instructionsToRelay;
+            hasExitInstructions = true;
+            rooms.instructionsToRelay = null;
+        }
     }
 
     @Override

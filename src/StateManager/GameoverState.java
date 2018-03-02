@@ -4,7 +4,7 @@ import GameObject.Graphic;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.terminal.Terminal;
 
-public class MenuState extends State {
+public class GameoverState extends State {
     @Override
     public void onInit() {
 
@@ -12,10 +12,7 @@ public class MenuState extends State {
 
     @Override
     public void onInput(Key key) {
-        if (key.getCharacter() == ' ') {
-            exitInstructions = new StateInstruction(States.ADVENTURE_STATE);
-            hasExitInstructions = true;
-        }
+
     }
 
     @Override
@@ -25,8 +22,7 @@ public class MenuState extends State {
 
     @Override
     public void onDraw(Terminal terminal) {
-        Graphic.printString(terminal, "Coolest game EU", 15, 15);
-        Graphic.printString(terminal, "Press 'space' to start", 15, 18);
+        Graphic.printString(terminal, "Game over", 15, 15);
     }
 
     @Override

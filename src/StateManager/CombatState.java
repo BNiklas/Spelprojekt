@@ -26,14 +26,14 @@ public class CombatState extends State {
             {2, 4, 3, 3, 2, 2, 1, 1, 0, 1},
             {2, 5, 4, 3, 3, 2, 2, 1, 1, 0}};
 
-    public void setFighters() {
-        this.player = new Player(1, 1, 'a');
-        this.enemy = new Monster(1, 1, 'a');
+    public void setFighters(GameObject player, GameObject monster) {
+        this.player = (Player) player;
+        this.enemy = (Monster) monster;
     }
 
     @Override
     public void onInit() {
-        setFighters();
+
     }
 
     @Override
@@ -70,10 +70,28 @@ public class CombatState extends State {
             terminal.clearScreen();
             clear = true;
         }
-        if (enemy.getHealth() < 1)
+
+        if (enemy.getHealth() < 1) {
+            enemy.kill();
             Graphic.printString(terminal, "You killed the " + enemy.getType(), 32, 13);
-        else if (player.getHealth() < 1)
-            Graphic.printString(terminal, "The " + enemy.getType() + " killed you!", 32, 13, Terminal.Color.RED);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            exitInstructions = new StateInstruction(States.ADVENTURE_STATE);
+            hasExitInstructions = true;
+        } else if (player.getHealth() < 1) {
+            player.kill();
+            Graphic.printString(terminal, "The " + enemy.getType() + " killed you!", 32, 13);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            exitInstructions = new StateInstruction(States.GAMEOVER_STATE);
+            hasExitInstructions = true;
+        }
     }
 
 
