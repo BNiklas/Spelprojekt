@@ -23,8 +23,9 @@ public abstract class Item extends GameObject {
     public boolean isOnGround(){
         return onGround;
     }
-    public void pickUp(){
+    public Item pickUp(){
         onGround = false;
+        return this;
     }
 
     public Item(int x, int y, char look, int value, String name) {
