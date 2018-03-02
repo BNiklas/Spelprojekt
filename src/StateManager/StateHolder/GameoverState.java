@@ -8,6 +8,9 @@ import com.googlecode.lanterna.terminal.Terminal;
 public class GameoverState extends State {
     private Player player;
 
+    private static final int TEXT_X_START = 10;
+    private static final int TEXT_Y_START = 10;
+
     public GameoverState(Player player) {
         super();
         this.player = player;
@@ -15,7 +18,7 @@ public class GameoverState extends State {
 
     @Override
     public void onDraw(Terminal terminal) {
-        Graphic.printString(terminal, "Game over", 15, 15);
-        Graphic.printString(terminal, "Your score is: " + player.getInventoryValue(), 15, 17);
+        Graphic.printString(terminal, "Game over", TEXT_X_START, TEXT_Y_START);
+        Graphic.printString(terminal, "Your score is: " + player.getInventoryValue(), TEXT_X_START, TEXT_Y_START + 2);
     }
 }

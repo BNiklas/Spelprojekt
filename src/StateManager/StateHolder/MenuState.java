@@ -6,6 +6,8 @@ import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.terminal.Terminal;
 
 public class MenuState extends State {
+    private static final int TEXT_X_START = 10;
+    private static final int TEXT_Y_START = 10;
 
     @Override
     public void onInput(Key key) {
@@ -17,7 +19,7 @@ public class MenuState extends State {
 
     @Override
     public void onDraw(Terminal terminal) {
-        Graphic.printString(terminal, "Welcome to the coolest game in the world", 15, 15);
-        Graphic.printString(terminal, "Press 'space' to start", 15, 18);
+        Graphic.printString(terminal, "Welcome to the coolest game in the world", TEXT_X_START, TEXT_Y_START);
+        Graphic.printString(terminal, "Press 'space' to start", TEXT_X_START, TEXT_Y_START + 2);
     }
 }
