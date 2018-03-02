@@ -25,7 +25,7 @@ public class MenuState extends State {
 
     @Override
     public void onDraw(Terminal terminal) {
-        Graphic.printString(terminal, "Coolest game EU", 15, 15);
+        Graphic.printString(terminal, "Welcome to the coolest game in the world", 15, 15);
         Graphic.printString(terminal, "Press 'space' to start", 15, 18);
     }
 
