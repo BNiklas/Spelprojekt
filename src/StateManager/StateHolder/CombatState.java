@@ -16,6 +16,8 @@ public class CombatState extends State {
     private int enemyAttack = -1;
     private boolean clear = false;
     private boolean needsToPrintInstruction = true;
+    private static final int TEXT_X_MIDDLE = 32;
+    private static final int TEXT_X_RIGHT = 72;
 
     private final int[][] dmgArray = {{0, 1, 1, 1, 1, 1, 1, 2, 2, 2},
             {1, 0, 1, 1, 2, 2, 3, 3, 4, 5},
@@ -65,7 +67,7 @@ public class CombatState extends State {
         }
         if (enemy.getHealth() < 1) {
             enemy.kill();
-            Graphic.printString(terminal, "You killed the " + enemy.getType(), 32, 13);
+            Graphic.printString(terminal, "You killed the " + enemy.getType(), TEXT_X_MIDDLE, 13);
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -75,7 +77,7 @@ public class CombatState extends State {
             hasExitInstructions = true;
         } else if (player.getHealth() < 1) {
             player.kill();
-            Graphic.printString(terminal, "The " + enemy.getType() + " killed you!", 32, 13);
+            Graphic.printString(terminal, "The " + enemy.getType() + " killed you!", TEXT_X_MIDDLE, 13);
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -114,24 +116,25 @@ public class CombatState extends State {
 
         //Tutorial
         if (needsToPrintInstruction) {
-            Graphic.printString(terminal, "HOW TO PLAY:", 72, 1);
-            Graphic.printString(terminal, "The highest attackvalue", 72, 3);
-            Graphic.printString(terminal, "wins the round and deals", 72, 4);
-            Graphic.printString(terminal, "damage to their opponent.", 72, 5);
-            Graphic.printString(terminal, "It is over once you or the", 72, 7);
-            Graphic.printString(terminal, "enemys health reaches zero", 72, 8);
-            Graphic.printString(terminal, "-Chose attack value", 72, 12);
-            Graphic.printString(terminal, "-Press Enter to lock in", 72, 13);
-            Graphic.printString(terminal, "To regain stamina, chose", 72, 16);
-            Graphic.printString(terminal, "\"Defend\", you can't deal", 72, 17);
-            Graphic.printString(terminal, "damage but will take ", 72, 18);
-            Graphic.printString(terminal, "minimum damage yourself.", 72, 19);
+            Graphic.printString(terminal, "HOW TO PLAY:", TEXT_X_RIGHT, 1);
+            Graphic.printString(terminal, "The highest attackvalue", TEXT_X_RIGHT, 3);
+            Graphic.printString(terminal, "wins the round and deals", TEXT_X_RIGHT, 4);
+            Graphic.printString(terminal, "damage to their opponent.", TEXT_X_RIGHT, 5);
+            Graphic.printString(terminal, "It is over once you or the", TEXT_X_RIGHT, 7);
+            Graphic.printString(terminal, "enemys health reaches zero", TEXT_X_RIGHT, 8);
+            Graphic.printString(terminal, "-Chose attack value", TEXT_X_RIGHT, 12);
+            Graphic.printString(terminal, "-Press Enter to lock in", TEXT_X_RIGHT, 13);
+            Graphic.printString(terminal, "To regain stamina, chose", TEXT_X_RIGHT, 16);
+            Graphic.printString(terminal, "\"Defend\", you can't deal", TEXT_X_RIGHT, 17);
+            Graphic.printString(terminal, "damage but will take ", TEXT_X_RIGHT, 18);
+            Graphic.printString(terminal, "minimum damage yourself.", TEXT_X_RIGHT, 19);
 
             //Add walls
-            terminal.applyForegroundColor(Terminal.Color.CYAN);
+            //terminal.applyForegroundColor(Terminal.Color.CYAN);
             for (int i = 70; i < 100; i++) {
-                terminal.moveCursor(i, 23);
-                terminal.putCharacter('\u2588');
+                Graphic.printString(terminal,"\u2588",i,23, Terminal.Color.CYAN);
+                /*terminal.moveCursor(i, 23);
+                terminal.putCharacter('\u2588');*/
             }
             for (int x = 0; x <= 70; x++) {
                 terminal.moveCursor(x, 29);
@@ -145,22 +148,23 @@ public class CombatState extends State {
                 terminal.moveCursor(0, y);
                 terminal.putCharacter('\u2588');
             }
-            terminal.applyForegroundColor(Terminal.Color.WHITE);
+            //terminal.applyForegroundColor(Terminal.Color.WHITE);
 
             //Enemy stats
             Graphic.printString(terminal, "You have encountered a " + enemy.getType(), 4, 2);
 
             //Player stats
-            Graphic.printString(terminal, "Your weapon:", 72, 27);
-            Graphic.printString(terminal, player.getBestWeapon().toString() + "to damage", 72, 28);
+            Graphic.printString(terminal, "PLAYER STATS:", TEXT_X_RIGHT, 24);
+            Graphic.printString(terminal, "Your weapon:", TEXT_X_RIGHT, 27);
+            Graphic.printString(terminal, player.getBestWeapon().toString() + "to damage", TEXT_X_RIGHT, 28);
 
             //ASCII
-            Graphic.printString(terminal, "  _____", 30, 10);
-            Graphic.printString(terminal, " /     \\", 30, 11);
-            Graphic.printString(terminal, "| () () |", 30, 12);
-            Graphic.printString(terminal, " \\  ^  /", 30, 13);
-            Graphic.printString(terminal, "  |||||", 30, 14);
-            Graphic.printString(terminal, "  |||||", 30, 15);
+            Graphic.printString(terminal, "  _____", TEXT_X_MIDDLE, 10);
+            Graphic.printString(terminal, " /     \\", TEXT_X_MIDDLE, 11);
+            Graphic.printString(terminal, "| () () |", TEXT_X_MIDDLE, 12);
+            Graphic.printString(terminal, " \\  ^  /", TEXT_X_MIDDLE, 13);
+            Graphic.printString(terminal, "  |||||", TEXT_X_MIDDLE, 14);
+            Graphic.printString(terminal, "  |||||", TEXT_X_MIDDLE, 15);
 
             needsToPrintInstruction = false;
         }
@@ -177,8 +181,8 @@ public class CombatState extends State {
             Graphic.printString(terminal, "Enemy hits for... " + enemyAttack, 24, 22);
         }
         //Player stats
-        Graphic.printString(terminal, "Health: " + player.getHealth() + " ", 72, 24);
+        Graphic.printString(terminal, "Health: " + player.getHealth() + " ", TEXT_X_RIGHT, 25);
 //        Graphic.printHealthbar(terminal, 72, 25, player.getHealth());
-        Graphic.printString(terminal, "Stamina: " + player.getStamina(), 72, 26);
+        Graphic.printString(terminal, "Stamina: " + player.getStamina(), TEXT_X_RIGHT, 26);
     }
 }
