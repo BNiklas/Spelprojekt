@@ -1,10 +1,18 @@
 package StateManager;
 
 import GameObject.Graphic;
+import GameObject.Player;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.terminal.Terminal;
 
 public class GameoverState extends State {
+    private Player player;
+
+    GameoverState(Player player) {
+        super();
+        this.player = player;
+    }
+
     @Override
     public void onInit() {
 
@@ -23,6 +31,7 @@ public class GameoverState extends State {
     @Override
     public void onDraw(Terminal terminal) {
         Graphic.printString(terminal, "Game over", 15, 15);
+        Graphic.printString(terminal, "Your score is: " + player.getInventoryValue(), 15, 17);
     }
 
     @Override
