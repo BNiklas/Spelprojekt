@@ -8,7 +8,6 @@ import com.googlecode.lanterna.terminal.Terminal;
 
 
 public class StateManager {
-    private State menuState = new MenuState();
     private State adventureState = new AdventureState();
     private State currentState;
 
@@ -17,7 +16,7 @@ public class StateManager {
     public void onInit(Terminal terminal) {
         this.terminal = terminal;
 
-        changeCurrentState(States.MENU_STATE);
+        changeCurrentState(new MenuState());
     }
 
     public void onInput(Key key) {
@@ -33,23 +32,20 @@ public class StateManager {
     private void handlePotentialExitInstructions() {
         if (currentState.hasExitInstructions()) {
             StateInstruction instruction = currentState.getExitInstructions();
-            if(instruction.getNewStateID() == States.COMBAT_STATE) {
-                exitState();
-                GameObject[] fighter = instruction.getGameObjects();
-                CombatState temp = new CombatState();
-                temp.setFighters(fighter[0], fighter[1]);
-                enterState(temp);
-                return;
-            }
-
-            if(instruction.getNewStateID() == States.GAMEOVER_STATE) {
-                exitState();
-                enterState(new GameoverState((Player) instruction.getGameObjects()[0]));
-                return;
-            }
-
-            if(instruction.getChangeState()) {
-                changeCurrentState(instruction.getNewStateID());
+            switch (instruction.getNewStateID()) {
+                case COMBAT_STATE:
+                    GameObject[] fighters = instruction.getGameObjects();
+                    changeCurrentState(new CombatState(fighters[0], fighters[1]));
+                    break;
+                case ADVENTURE_STATE:
+                    changeCurrentState(adventureState);
+                    break;
+                case MENU_STATE:
+                    changeCurrentState(new MenuState());
+                    break;
+                case GAMEOVER_STATE:
+                    changeCurrentState(new GameoverState((Player) instruction.getGameObjects()[0]));
+                    break;
             }
         }
     }
@@ -58,24 +54,9 @@ public class StateManager {
         currentState.onDraw(terminal);
     }
 
-    private void changeCurrentState(States stateID) {
+    private void changeCurrentState(State newState) {
         exitState();
-        switch (stateID) {
-            case MENU_STATE:
-                enterState(menuState);
-                break;
-            case ADVENTURE_STATE:
-                enterState(adventureState);
-                break;
-            case COMBAT_STATE:
-                // should never happen
-                enterState(new CombatState());
-                break;
-            case GAMEOVER_STATE:
-                // should never happen
-                enterState(new GameoverState(null));
-                break;
-        }
+        enterState(newState);
     }
 
     private void enterState(State newState) {
