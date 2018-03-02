@@ -57,7 +57,7 @@ public class Monster extends Chaser {
         Random rand = new Random();
         for(int i = rand.nextInt(bound); i < bound; i++){
             monsters.add(new Monster(getRandomNumberInRange(padding, (Room.getScreenWidth() - padding)),
-                    getRandomNumberInRange(padding, (Room.getScreenHeight() - padding)), 'M'));
+                    getRandomNumberInRange(padding, (Room.getScreenHeight() - padding)), '\u046d'));
         }
         return monsters;
     }
