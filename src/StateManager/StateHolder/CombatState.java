@@ -139,7 +139,7 @@ public class CombatState extends State {
                 Graphic.printString(terminal, "\u2588", i, 0, Terminal.Color.CYAN);
             }
             for (int i = 1; i < 29; i++) {
-                Graphic.printString(terminal, "\u2588", i, 70, Terminal.Color.CYAN);
+                Graphic.printString(terminal, "\u2588", 0, i, Terminal.Color.CYAN);
                 Graphic.printString(terminal, "\u2588", 70, i, Terminal.Color.CYAN);
             }
 
