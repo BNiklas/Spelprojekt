@@ -10,13 +10,13 @@ import GameObject.*;
 import java.util.Random;
 
 public class CombatState extends State {
-    Player player;
-    Monster enemy;
-    int playerAttack = 5;
-    int enemyAttack = -1;
-    boolean clear = false;
+    private Player player;
+    private Monster enemy;
+    private int playerAttack = 5;
+    private int enemyAttack = -1;
+    private boolean clear = false;
 
-    final int[][] dmgArray = {{0, 1, 1, 1, 1, 1, 1, 2, 2, 2},
+    private final int[][] dmgArray = {{0, 1, 1, 1, 1, 1, 1, 2, 2, 2},
             {1, 0, 1, 1, 2, 2, 3, 3, 4, 5},
             {1, 1, 0, 1, 1, 2, 2, 3, 3, 4},
             {1, 1, 1, 0, 1, 1, 2, 2, 3, 3},
@@ -31,11 +31,6 @@ public class CombatState extends State {
         this.player = (Player) player;
         ((Player) player).setStamina(9);
         this.enemy = (Monster) monster;
-    }
-
-    @Override
-    public void onInit() {
-
     }
 
     @Override
@@ -60,11 +55,6 @@ public class CombatState extends State {
 
 
     @Override
-    public void onLoop() {
-
-    }
-
-    @Override
     public void onDraw(Terminal terminal) {
         if (enemy.getHealth() > 0 && player.getHealth() > 0) {
             printCombatText(terminal);
@@ -72,7 +62,6 @@ public class CombatState extends State {
             terminal.clearScreen();
             clear = true;
         }
-
         if (enemy.getHealth() < 1) {
             enemy.kill();
             Graphic.printString(terminal, "You killed the " + enemy.getType(), 32, 13);
@@ -116,14 +105,10 @@ public class CombatState extends State {
     }
 
     @Override
-    public void enter() {
+    public void onLoop() {
 
     }
 
-    @Override
-    public void exit() {
-
-    }
 
     private void printCombatText(Terminal terminal) {
         //Tutorial
@@ -140,19 +125,19 @@ public class CombatState extends State {
         Graphic.printString(terminal, "damage but will take ", 72, 18);
         Graphic.printString(terminal, "minimum damage yourself.", 72, 19);
 
-        //Extra wall
+        //Add walls
         terminal.applyForegroundColor(Terminal.Color.CYAN);
         for (int i = 70; i < 100; i++) {
             terminal.moveCursor(i, 23);
             terminal.putCharacter('\u2588');
         }
-        for(int x = 0; x <= 70; x++){
+        for (int x = 0; x <= 70; x++) {
             terminal.moveCursor(x, 29);
             terminal.putCharacter('\u2588');
             terminal.moveCursor(x, 0);
             terminal.putCharacter('\u2588');
         }
-        for(int y = 1; y < 29; y++){
+        for (int y = 1; y < 29; y++) {
             terminal.moveCursor(70, y);
             terminal.putCharacter('\u2588');
             terminal.moveCursor(0, y);
