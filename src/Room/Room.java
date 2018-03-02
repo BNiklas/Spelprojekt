@@ -26,7 +26,8 @@ public class Room {
         this.addObjectsToRoom(gameObjects);
 
     }
-    private void addObjectsToRoom(List<GameObject> gameObjects){
+
+    private void addObjectsToRoom(List<GameObject> gameObjects) {
         Random rand = new Random();
         gameObjects.add(new Door(rand.nextInt(SCREEN_WIDTH - 2) + 1, rand.nextInt(SCREEN_HEIGHT - 2) + 1));
         this.addMonsters(gameObjects);
@@ -98,11 +99,11 @@ public class Room {
                 }
                 if (gameObject.getX() == innerObject.getX() && gameObject.getY() == innerObject.getY()) {
                     for (Collision collision : collisions) {
-                        if(collision.contains(gameObject, innerObject)) {
+                        if (collision.contains(gameObject, innerObject)) {
                             alreadyExists = true;
                         }
                     }
-                    if(!alreadyExists) {
+                    if (!alreadyExists) {
                         collisions.add(new Collision(gameObject, innerObject));
                     }
                 }
@@ -124,22 +125,25 @@ public class Room {
         return temp;
     }
 
-    private void addRandomItems(List<GameObject> gameObjects){
+    private void addRandomItems(List<GameObject> gameObjects) {
         gameObjects.addAll(Valuable.getRandomValuables(6));
         gameObjects.addAll(Weapon.getRandomWeapons(2));
     }
-    private void addMonsters(List<GameObject> gameObjects){
+
+    private void addMonsters(List<GameObject> gameObjects) {
         gameObjects.addAll(Monster.getRandomAmountOfMonsters(4));
     }
 
-    private void addHills(List<GameObject> gameObjects){
+    private void addHills(List<GameObject> gameObjects) {
         gameObjects.addAll(Hill.getHills());
     }
 
-    private void addWalls(List<GameObject> gameObjects){
+    private void addWalls(List<GameObject> gameObjects) {
         gameObjects.addAll(Wall.getWalls());
     }
 
-    private void addLakes(List<GameObject> gameObjects){ gameObjects.addAll(Lake.getLake()); }
+    private void addLakes(List<GameObject> gameObjects) {
+        gameObjects.addAll(Lake.getLake());
+    }
 
 }

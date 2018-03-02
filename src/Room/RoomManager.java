@@ -44,9 +44,9 @@ public class RoomManager {
             } else if (collidedObjectOne instanceof Door && collidedObjectTwo instanceof Player) {
                 swapRoom(((Door) collidedObjectOne).getRoom());
             } else if (collidedObjectOne instanceof Player && collidedObjectTwo instanceof Monster) {
-                instructionsToRelay = new StateInstruction(States.COMBAT_STATE, new GameObject[] {collidedObjectOne, collidedObjectTwo});
+                instructionsToRelay = new StateInstruction(States.COMBAT_STATE, new GameObject[]{collidedObjectOne, collidedObjectTwo});
             } else if (collidedObjectOne instanceof Monster && collidedObjectTwo instanceof Player) {
-                instructionsToRelay = new StateInstruction(States.COMBAT_STATE, new GameObject[] {collidedObjectTwo, collidedObjectOne});
+                instructionsToRelay = new StateInstruction(States.COMBAT_STATE, new GameObject[]{collidedObjectTwo, collidedObjectOne});
             }
         }
     }
