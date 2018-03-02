@@ -13,8 +13,8 @@ public class AdventureState extends State {
     private RoomManager rooms;
     private Player player;
 
-    @Override
-    public void onInit() {
+    public AdventureState() {
+        super();
         player = new Player(5, 5, '\u263b');
         rooms = new RoomManager(player);
     }
@@ -29,17 +29,18 @@ public class AdventureState extends State {
             player.onMove(-1, 0);
         } else if (key.getKind() == Key.Kind.ArrowRight || key.getCharacter() == 'd') {
             player.onMove(1, 0);
-        } else  if (key.getCharacter() == ' ') {
+        } else if (key.getCharacter() == ' ') {
             exitInstructions = new StateInstruction(States.MENU_STATE);
             hasExitInstructions = true;
         }
     }
-    private void printAdventureText(Terminal terminal){
+
+    private void printAdventureText(Terminal terminal) {
         Graphic.printString(terminal, "Health: " + player.getHealth(), 75, 5, Terminal.Color.GREEN);
         Graphic.printHealthbar(terminal, 72, 6, player.getHealth());
         Graphic.printString(terminal, "Inventory: ", 72, 10, Terminal.Color.GREEN);
         int position = 11;
-        for(Item item : player.getInventory()){
+        for (Item item : player.getInventory()) {
             Graphic.printString(terminal, item.getName() + ", Value: " + item.getValue(), 72, position);
             position++;
         }
@@ -64,11 +65,7 @@ public class AdventureState extends State {
 
     @Override
     public void enter() {
+        super.enter();
         rooms.reDraw();
-    }
-
-    @Override
-    public void exit() {
-
     }
 }

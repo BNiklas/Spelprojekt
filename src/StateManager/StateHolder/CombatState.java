@@ -33,7 +33,6 @@ public class CombatState extends State {
         this.enemy = (Monster) monster;
     }
 
-    @Override
     public void onInit() {
 
     }
@@ -117,11 +116,6 @@ public class CombatState extends State {
 
     @Override
     public void enter() {
-
-    }
-
-    @Override
-    public void exit() {
 
     }
 

@@ -1,24 +1,20 @@
 package StateManager.StateHolder;
 
-import Room.*;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.terminal.Terminal;
 
-import java.util.List;
-
 
 abstract public class State {
-    protected boolean hasExitInstructions = false;
-    protected StateInstruction exitInstructions = null;
+    boolean hasExitInstructions = false;
+    StateInstruction exitInstructions = null;
 
-    private List<Room> rooms;
+    public void onInput(Key key) {}
 
-    abstract public void onInit();
-    abstract public void onInput(Key key);
-    abstract public void onLoop();
+    public void onLoop() {}
+
     abstract public void onDraw(Terminal terminal);
-    abstract public void enter();
-    abstract public void exit();
+
+    public void enter() {}
 
     public boolean hasExitInstructions() {
         return hasExitInstructions;
