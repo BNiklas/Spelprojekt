@@ -18,6 +18,7 @@ public class CombatState extends State {
     private boolean needsToPrintInstruction = true;
     private static final int TEXT_X_MIDDLE = 32;
     private static final int TEXT_X_RIGHT = 72;
+    private static final int TEXT_X_COMBAT = 24;
 
     private final int[][] dmgArray = {{0, 1, 1, 1, 1, 1, 1, 2, 2, 2},
             {1, 0, 1, 1, 2, 2, 3, 3, 4, 5},
@@ -167,12 +168,13 @@ public class CombatState extends State {
 
         //Combat texts
         if (playerAttack == 0)
-            Graphic.printString(terminal, "You will Defend this turn!", 24, 21);
+            Graphic.printString(terminal, "You will Defend this turn!", TEXT_X_COMBAT, 21);
         else
-            Graphic.printString(terminal, "How hard will you hit?:  " + playerAttack, 24, 21);
+            Graphic.printString(terminal, "How hard will you hit?:  " + playerAttack, TEXT_X_COMBAT, 21);
         if (enemyAttack != -1) {
-            Graphic.printString(terminal, "Enemy hits for... " + enemyAttack, 24, 22);
+            Graphic.printString(terminal, "Enemy hits for... " + enemyAttack, TEXT_X_COMBAT, 22);
         }
+        
         //Player stats
         Graphic.printString(terminal, "Health: " + player.getHealth() + " ", TEXT_X_RIGHT, 25);
         Graphic.printString(terminal, "Stamina: " + player.getStamina(), TEXT_X_RIGHT, 26);
