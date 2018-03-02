@@ -28,12 +28,9 @@ public class Player extends Character {
 
     @Override
     public void onCollide(GameObject object) {
-        System.out.println("colloisio");
         super.onCollide(object);
-        System.out.println("after sup");
         if (object instanceof Item) {
             this.inventory.add(((Item) object).pickUp());
-            System.out.println(object);
         }
     }
 }
