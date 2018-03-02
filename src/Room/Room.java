@@ -21,6 +21,10 @@ public class Room {
 
     public Room() {
         this.gameObjects = new ArrayList<>();
+        this.addObjectsToRoom(gameObjects);
+
+    }
+    private void addObjectsToRoom(List<GameObject> gameObjects){
         Random rand = new Random();
         gameObjects.add(new Door(rand.nextInt(SCREEN_WIDTH - 2) + 1, rand.nextInt(SCREEN_HEIGHT - 2) + 1));
         this.addMonsters(gameObjects);
@@ -28,7 +32,6 @@ public class Room {
         this.addWalls(gameObjects);
         this.addHills(gameObjects);
         this.addLakes(gameObjects);
-
     }
 
     public void addBackPortal(Room oldRoom) {

@@ -22,7 +22,6 @@ public class StateManager {
         combatState.onInit();
 
         this.terminal = terminal;
-
         changeCurrentState(States.MENU_STATE);
     }
 
