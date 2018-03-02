@@ -108,6 +108,7 @@ public class CombatState extends State {
     public void onLoop() {
 
     }
+
     private void printCombatText(Terminal terminal) {
         //Tutorial
         Graphic.printString(terminal, "HOW TO PLAY:", 72, 1);
@@ -147,21 +148,27 @@ public class CombatState extends State {
         Graphic.printString(terminal, "You have encountered a " + enemy.getType(), 4, 2);
         Graphic.printString(terminal, "-Stamina: " + enemy.getStamina(), 6, 3);
         Graphic.printString(terminal, "-Health: " + enemy.getHealth() + " ", 6, 4);
+
+        //ASCII
+        Graphic.printString(terminal,"  _____", 30,10);
+        Graphic.printString(terminal," /     \\", 30,11);
+        Graphic.printString(terminal,"| () () |", 30,12);
+        Graphic.printString(terminal," \\  ^  /", 30,13);
+        Graphic.printString(terminal,"  |||||", 30,14);
+        Graphic.printString(terminal,"  |||||", 30,15);
+
         //Combat texts
         if (playerAttack == 0)
-            Graphic.printString(terminal, "You will Defend this turn!", 27, 13);
+            Graphic.printString(terminal, "You will Defend this turn!", 24, 21);
         else
-            Graphic.printString(terminal, "How hard will you hit?:  " + playerAttack, 27, 13);
+            Graphic.printString(terminal, "How hard will you hit?:  " + playerAttack, 24, 21);
         if (enemyAttack != -1) {
-            Graphic.printString(terminal, "Enemy hits for... " + enemyAttack, 27, 14);
-            Graphic.printString(terminal, "Enemy hits for... " + enemyAttack, 27, 14);
+            Graphic.printString(terminal, "Enemy hits for... " + enemyAttack, 24, 22);
         }
         //Player stats
-        Graphic.printString(terminal, "Player status ", 47, 25);
-        Graphic.printString(terminal, "-Stamina: " + player.getStamina(), 50, 26);
-        Graphic.printString(terminal, "-Health: " + player.getHealth() + " ", 50, 27);
         Graphic.printString(terminal, "Health: " + player.getHealth() + " ", 72, 24);
         Graphic.printHealthbar(terminal, 72, 25, player.getHealth());
+        Graphic.printString(terminal, "Stamina: " + player.getStamina(), 72, 26);
         Graphic.printString(terminal, "Your weapon:", 72, 27);
         Graphic.printString(terminal, player.getBestWeapon().toString() + "to damage", 72, 28);
     }
