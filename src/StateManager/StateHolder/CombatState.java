@@ -32,7 +32,7 @@ public class CombatState extends State {
         ((Player) player).setStamina(9);
         this.enemy = (Monster) monster;
     }
-    
+
     @Override
     public void onInput(Key key) {
         switch (key.getKind()) {
