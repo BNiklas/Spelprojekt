@@ -32,6 +32,9 @@ public class Room {
         this.addWalls(gameObjects);
         this.addHills(gameObjects);
         this.addLakes(gameObjects);
+        this.addLakes(gameObjects);
+        this.addHills(gameObjects);
+        this.addHills(gameObjects);
     }
 
     public void addBackPortal(Room oldRoom) {
