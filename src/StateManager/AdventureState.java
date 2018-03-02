@@ -33,8 +33,8 @@ public class AdventureState extends State {
         }
     }
     private void printAdventureText(Terminal terminal){
-        Graphic.printString(terminal, "Health: " + player.getHealth(), 75, 24, Terminal.Color.GREEN);
-        Graphic.printHealthbar(terminal, 75, 25, player.getHealth());
+        Graphic.printString(terminal, "Health: " + player.getHealth(), 75, 5, Terminal.Color.GREEN);
+        Graphic.printHealthbar(terminal, 72, 6, player.getHealth());
         Graphic.printString(terminal, "Inventory: ", 72, 10, Terminal.Color.GREEN);
         int position = 11;
         for(Item item : player.getInventory()){
