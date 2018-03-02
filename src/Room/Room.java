@@ -2,11 +2,8 @@ package Room;
 
 import GameObject.*;
 import GameObject.Characters.*;
-import GameObject.Obstacles.*;
 import Item.Item;
-import Item.Items.*;
 import com.googlecode.lanterna.terminal.Terminal;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -23,21 +20,20 @@ public class Room {
 
     public Room() {
         this.gameObjects = new ArrayList<>();
-        this.addObjectsToRoom(gameObjects);
-
+        this.addObjectsToRoom();
     }
 
-    private void addObjectsToRoom(List<GameObject> gameObjects) {
+    private void addObjectsToRoom() {
         Random rand = new Random();
         gameObjects.add(new Door(rand.nextInt(SCREEN_WIDTH - 2) + 1, rand.nextInt(SCREEN_HEIGHT - 2) + 1));
-        this.addMonsters(gameObjects);
-        this.addRandomItems(gameObjects);
-        this.addWalls(gameObjects);
-        this.addHills(gameObjects);
-        this.addLakes(gameObjects);
-        this.addLakes(gameObjects);
-        this.addHills(gameObjects);
-        this.addHills(gameObjects);
+        gameObjects.addAll(ContentGenerator.getRandomAmountOfMonsters(4));
+        gameObjects.addAll(ContentGenerator.getRandomValuables(6));
+        gameObjects.addAll(ContentGenerator.getRandomWeapons(2));
+        gameObjects.addAll(ContentGenerator.getWalls());
+        gameObjects.addAll(ContentGenerator.getHills());
+        gameObjects.addAll(ContentGenerator.getHills());
+        gameObjects.addAll(ContentGenerator.getLake());
+        gameObjects.addAll(ContentGenerator.getLake());
     }
 
     public void addBackPortal(Room oldRoom) {
@@ -123,27 +119,6 @@ public class Room {
         Player temp = this.player;
         this.player = null;
         return temp;
-    }
-
-    private void addRandomItems(List<GameObject> gameObjects) {
-        gameObjects.addAll(Valuable.getRandomValuables(6));
-        gameObjects.addAll(Weapon.getRandomWeapons(2));
-    }
-
-    private void addMonsters(List<GameObject> gameObjects) {
-        gameObjects.addAll(Monster.getRandomAmountOfMonsters(4));
-    }
-
-    private void addHills(List<GameObject> gameObjects) {
-        gameObjects.addAll(Hill.getHills());
-    }
-
-    private void addWalls(List<GameObject> gameObjects) {
-        gameObjects.addAll(Wall.getWalls());
-    }
-
-    private void addLakes(List<GameObject> gameObjects) {
-        gameObjects.addAll(Lake.getLake());
     }
 
 }
