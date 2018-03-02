@@ -10,15 +10,11 @@ import com.googlecode.lanterna.terminal.Terminal;
 public class StateManager {
     private State menuState = new MenuState();
     private State adventureState = new AdventureState();
-    private State combatState = new CombatState();
     private State currentState;
 
     private Terminal terminal;
 
     public void onInit(Terminal terminal) {
-        adventureState.onInit();
-        combatState.onInit();
-
         this.terminal = terminal;
 
         changeCurrentState(States.MENU_STATE);
@@ -89,7 +85,6 @@ public class StateManager {
 
     private void exitState() {
         if (currentState != null) {
-            currentState.exit();
             terminal.clearScreen();
         }
     }
