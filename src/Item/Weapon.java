@@ -35,7 +35,7 @@ public class Weapon extends Item {
         for (int i = rand.nextInt(bound); i < bound; i++) {
             valuables.add(new Weapon(Helper.getRandomNumberInRange(padding, (Room.getScreenWidth() - padding)),
                     Helper.getRandomNumberInRange(padding, (Room.getScreenHeight() - padding)), '\u2020',
-                    rand.nextInt(30), "Sword", rand.nextInt(10)));
+                    rand.nextInt(30), "Sword", rand.nextInt(9) + 1));
         }
         return valuables;
     }
