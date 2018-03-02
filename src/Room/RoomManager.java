@@ -10,7 +10,6 @@ import com.googlecode.lanterna.terminal.Terminal;
 
 import java.util.List;
 
-
 public class RoomManager {
 
     private Room currentRoom;
