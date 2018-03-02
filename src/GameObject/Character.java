@@ -48,7 +48,7 @@ public class Character extends GameObject {
     protected int getSpeed(){
         return speed;
     }
-    protected List<Item> getInventory(){
+    public List<Item> getInventory(){
         return inventory;
     }
     protected void setSpeed(int speed){

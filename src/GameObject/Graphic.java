@@ -42,16 +42,16 @@ public class Graphic {
     public static void printHealthbar(Terminal terminal, int x, int y, int health) {
 
         char charToPrint = '\u2588';
-        if (health < 10 && health > 0) {
-            health = 10;
-        }
+//        if (health < 10 && health > 0) {
+//            health = 10;
+//        }
 
-        for (int i = 0; i < health / 10; i++) {
+        for (int i = 0; i < health; i++) {
             terminal.applyForegroundColor(Terminal.Color.GREEN);
             terminal.moveCursor(i + x, y);
             terminal.putCharacter(charToPrint);
         }
-        for (int i = health / 10; i < 10; i++) {
+        for (int i = 15; i < health; i--) {
             terminal.applyForegroundColor(Terminal.Color.RED);
             terminal.moveCursor(i + x, y);
             terminal.putCharacter(charToPrint);

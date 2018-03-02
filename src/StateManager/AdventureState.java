@@ -4,6 +4,7 @@ import GameObject.*;
 import Room.*;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.input.Key;
+import Item.*;
 
 public class AdventureState extends State {
 
@@ -31,8 +32,15 @@ public class AdventureState extends State {
             hasExitInstructions = true;
         }
     }
-    private void printAdventureText(){
-
+    private void printAdventureText(Terminal terminal){
+        Graphic.printString(terminal, "Health: " + player.getHealth(), 75, 24, Terminal.Color.GREEN);
+        Graphic.printHealthbar(terminal, 75, 25, player.getHealth());
+        Graphic.printString(terminal, "Inventory: ", 72, 10, Terminal.Color.GREEN);
+        int position = 11;
+        for(Item item : player.getInventory()){
+            Graphic.printString(terminal, item.getName() + ", Value: " + item.getValue(), 72, position);
+            position++;
+        }
     }
 
     @Override
@@ -48,6 +56,7 @@ public class AdventureState extends State {
 
     @Override
     public void onDraw(Terminal terminal) {
+        printAdventureText(terminal);
         rooms.onDraw(terminal);
     }
 
