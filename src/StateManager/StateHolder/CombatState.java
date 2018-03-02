@@ -174,7 +174,7 @@ public class CombatState extends State {
         if (enemyAttack != -1) {
             Graphic.printString(terminal, "Enemy hits for... " + enemyAttack, TEXT_X_COMBAT, 22);
         }
-        
+
         //Player stats
         Graphic.printString(terminal, "Health: " + player.getHealth() + " ", TEXT_X_RIGHT, 25);
         Graphic.printString(terminal, "Stamina: " + player.getStamina(), TEXT_X_RIGHT, 26);

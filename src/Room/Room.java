@@ -13,7 +13,7 @@ public class Room {
     private List<GameObject> gameObjects;
     private Player player;
 
-    public boolean wantsBackPortal = true;
+    boolean wantsBackPortal = true;
 
     private static final int SCREEN_WIDTH = 70;
     private static final int SCREEN_HEIGHT = 30;
@@ -37,17 +37,17 @@ public class Room {
         gameObjects.addAll(ContentGenerator.getLake());
     }
 
-    public void addBackPortal(Room oldRoom) {
+    void addBackPortal(Room oldRoom) {
         Random rand = new Random();
         wantsBackPortal = false;
         gameObjects.add(new Door(rand.nextInt(SCREEN_WIDTH - 2) + 1, rand.nextInt(SCREEN_HEIGHT - 2) + 1, Terminal.Color.BLUE, oldRoom));
     }
 
-    public static int getScreenWidth() {
+    static int getScreenWidth() {
         return SCREEN_WIDTH;
     }
 
-    public static int getScreenHeight() {
+    static int getScreenHeight() {
         return SCREEN_HEIGHT;
     }
 
@@ -80,13 +80,13 @@ public class Room {
         }
     }
 
-    public void reDraw() {
+    void reDraw() {
         for (GameObject gameObject : gameObjects) {
             gameObject.needsToDraw();
         }
     }
 
-    public List<Collision> checkCollisions() {
+    List<Collision> checkCollisions() {
         List<Collision> collisions = new ArrayList<>();
         for (GameObject gameObject : gameObjects) {
             for (GameObject innerObject : gameObjects) {
@@ -109,13 +109,13 @@ public class Room {
         return collisions;
     }
 
-    public void onEnter(Player player) {
+    void onEnter(Player player) {
         gameObjects.add(player);
         this.player = player;
         reDraw();
     }
 
-    public Player onExit() {
+    Player onExit() {
         gameObjects.remove(player);
         Player temp = this.player;
         this.player = null;
