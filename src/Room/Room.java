@@ -1,17 +1,9 @@
 package Room;
 
 import GameObject.*;
-import GameObject.Characters.Chaser;
-import GameObject.Characters.Monster;
-import GameObject.Characters.Player;
-import GameObject.Obstacles.Hill;
-import GameObject.Obstacles.Lake;
-import GameObject.Obstacles.Wall;
+import GameObject.Characters.*;
 import Item.Item;
-import Item.Items.Valuable;
-import Item.Items.Weapon;
 import com.googlecode.lanterna.terminal.Terminal;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -129,21 +121,21 @@ public class Room {
     }
 
     private void addRandomItems(List<GameObject> gameObjects){
-        gameObjects.addAll(Valuable.getRandomValuables(6));
-        gameObjects.addAll(Weapon.getRandomWeapons(2));
+        gameObjects.addAll(ContentGenerator.getRandomValuables(6));
+        gameObjects.addAll(ContentGenerator.getRandomWeapons(2));
     }
     private void addMonsters(List<GameObject> gameObjects){
-        gameObjects.addAll(Monster.getRandomAmountOfMonsters(4));
+        gameObjects.addAll(ContentGenerator.getRandomAmountOfMonsters(4));
     }
 
     private void addHills(List<GameObject> gameObjects){
-        gameObjects.addAll(Hill.getHills());
+        gameObjects.addAll(ContentGenerator.getHills());
     }
 
     private void addWalls(List<GameObject> gameObjects){
-        gameObjects.addAll(Wall.getWalls());
+        gameObjects.addAll(ContentGenerator.getWalls());
     }
 
-    private void addLakes(List<GameObject> gameObjects){ gameObjects.addAll(Lake.getLake()); }
+    private void addLakes(List<GameObject> gameObjects){ gameObjects.addAll(ContentGenerator.getLake()); }
 
 }
