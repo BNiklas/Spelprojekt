@@ -132,15 +132,15 @@ public class CombatState extends State {
 
             //Add walls
             for (int i = 70; i < 100; i++) {
-                Graphic.printString(terminal,"\u2588",i,23, Terminal.Color.CYAN);
+                Graphic.printString(terminal, "\u2588", i, 23, Terminal.Color.CYAN);
             }
-            for (int x = 0; x <= 70; x++) {
-                Graphic.printString(terminal,"\u2588",x,29, Terminal.Color.CYAN);
-                Graphic.printString(terminal,"\u2588",x,0, Terminal.Color.CYAN);
+            for (int i = 0; i <= 70; i++) {
+                Graphic.printString(terminal, "\u2588", i, 29, Terminal.Color.CYAN);
+                Graphic.printString(terminal, "\u2588", i, 0, Terminal.Color.CYAN);
             }
-            for (int y = 1; y < 29; y++) {
-                Graphic.printString(terminal,"\u2588",y,70, Terminal.Color.CYAN);
-                Graphic.printString(terminal,"\u2588",70,y, Terminal.Color.CYAN);
+            for (int i = 1; i < 29; i++) {
+                Graphic.printString(terminal, "\u2588", i, 70, Terminal.Color.CYAN);
+                Graphic.printString(terminal, "\u2588", 70, i, Terminal.Color.CYAN);
             }
 
             //Enemy stats

@@ -8,13 +8,16 @@ abstract public class State {
     boolean hasExitInstructions = false;
     StateInstruction exitInstructions = null;
 
-    public void onInput(Key key) {}
+    public void onInput(Key key) {
+    }
 
-    public void onLoop() {}
+    public void onLoop() {
+    }
 
     abstract public void onDraw(Terminal terminal);
 
-    public void enter() {}
+    public void enter() {
+    }
 
     public boolean hasExitInstructions() {
         return hasExitInstructions;

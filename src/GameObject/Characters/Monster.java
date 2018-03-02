@@ -2,16 +2,18 @@ package GameObject.Characters;
 
 
 import java.util.Random;
+
 import GameObject.GameObject;
 
 public class Monster extends Chaser {
     private String type;
-    private String[] types={"Skeleton","Goblin"};
+
     public Monster(int x, int y, char look) {
         super(x, y, look, true);
 
         Random rand = new Random();
-        this.type=types[rand.nextInt(2)];
+        String[] types = {"Skeleton", "Goblin"};
+        this.type = types[rand.nextInt(2)];
         setSpeed(1);
     }
 
@@ -42,13 +44,12 @@ public class Monster extends Chaser {
             move(-this.getSpeed(), 0);
         } else if (this.getY() < object.getY()) {
             move(0, this.getSpeed());
-        } else if(this.getY() > object.getY()){
+        } else if (this.getY() > object.getY()) {
             move(0, -this.getSpeed());
         }
     }
 
-    public String getType(){
+    public String getType() {
         return type;
     }
-
 }

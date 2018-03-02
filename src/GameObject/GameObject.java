@@ -52,7 +52,7 @@ public class GameObject {
         }
     }
 
-    protected boolean isTraversable() {
+    private boolean isTraversable() {
         return traversable;
     }
 

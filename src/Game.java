@@ -16,7 +16,7 @@ public class Game {
         onInit();
 
         //Gameloop
-        while(running){
+        while (running) {
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {

@@ -14,12 +14,13 @@ public class Weapon extends Item {
         super(x, y, look, value, name);
         this.attackValue = attackValue;
     }
-    public int getAttackValue(){
+
+    public int getAttackValue() {
         return attackValue;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Sword" + "(+" + getAttackValue() + ")";
     }
 }

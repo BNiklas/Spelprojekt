@@ -8,7 +8,7 @@ public abstract class Item extends GameObject {
     private String name;
     private boolean onGround = true;
 
-    public Item() {
+    protected Item() {
         this(0, 0, 'I', Terminal.Color.WHITE, 0, "");
     }
 

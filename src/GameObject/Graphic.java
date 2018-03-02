@@ -6,7 +6,7 @@ public class Graphic {
     private char graphic;
     private Terminal.Color color;
 
-    Graphic(char graphic, Terminal.Color color){
+    Graphic(char graphic, Terminal.Color color) {
         this.graphic = graphic;
         this.color = color;
     }
@@ -26,6 +26,7 @@ public class Graphic {
     public static void printString(Terminal terminal, String input, int x, int y) {
         printString(terminal, input, x, y, Terminal.Color.WHITE);
     }
+
     public static void printString(Terminal terminal, String input, int x, int y, Terminal.Color color) {
         char[] chars = input.toCharArray();
         terminal.applyForegroundColor(color);

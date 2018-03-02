@@ -2,10 +2,11 @@ package Item.Items;
 
 import Item.Item;
 import com.googlecode.lanterna.terminal.Terminal;
+
 import java.util.*;
 
 public class Valuable extends Item {
-    private static final ArrayList<String> VALUABLE_NAMES = new ArrayList<String>(Arrays.asList(
+    private static final ArrayList<String> VALUABLE_NAMES = new ArrayList<>(Arrays.asList(
             "Bronze piece", "Silver piece", "Ruby", "Diamond", "Gold piece", "Emerald", "Silver plate", "Tanzanite",
             "Lazurite", "Peridot", "Nephrite", "Malachite", "Charoite"));
 
