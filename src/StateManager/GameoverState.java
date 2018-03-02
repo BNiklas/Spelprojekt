@@ -12,7 +12,7 @@ public class GameoverState extends State {
 
     @Override
     public void onInput(Key key) {
-        
+
     }
 
     @Override

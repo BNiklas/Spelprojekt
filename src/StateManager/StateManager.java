@@ -6,13 +6,15 @@ import com.googlecode.lanterna.terminal.Terminal;
 enum States {
     MENU_STATE,
     ADVENTURE_STATE,
-    COMBAT_STATE
+    COMBAT_STATE,
+    GAMEOVER_STATE
 }
 
 public class StateManager {
     private State menuState = new MenuState();
     private State adventureState = new AdventureState();
     private State combatState = new CombatState();
+    private State gameoverState = new GameoverState();
     private State currentState;
 
     private Terminal terminal;
@@ -23,7 +25,7 @@ public class StateManager {
 
         this.terminal = terminal;
 
-        changeCurrentState(States.MENU_STATE);
+        changeCurrentState(States.COMBAT_STATE);
     }
 
     public void onInput(Key key) {
@@ -60,6 +62,9 @@ public class StateManager {
                 break;
             case COMBAT_STATE:
                 enterState(combatState);
+                break;
+            case GAMEOVER_STATE:
+                enterState(gameoverState);
                 break;
         }
     }
