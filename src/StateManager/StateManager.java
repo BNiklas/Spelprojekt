@@ -52,7 +52,6 @@ public class StateManager {
 
             if(instruction.getChangeState()) {
                 changeCurrentState(instruction.getNewStateID());
-                System.out.println(instruction.getNewStateID());
             }
         }
     }

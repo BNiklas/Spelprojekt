@@ -98,7 +98,7 @@ public class CombatState extends State {
 
     private void updateHealth() {
         if(playerAttack > enemyAttack)
-            enemy.setHealth(enemy.getHealth()-Math.abs(dmgArray[playerAttack][enemyAttack]));
+            enemy.setHealth(enemy.getHealth()-(Math.abs(dmgArray[playerAttack][enemyAttack])+player.getBestWeapon().getAttackValue()));
         else if(enemyAttack > playerAttack)
             player.setHealth(player.getHealth()-Math.abs(dmgArray[enemyAttack][playerAttack]));
     }
@@ -162,7 +162,7 @@ public class CombatState extends State {
         Graphic.printString(terminal, "Player status ", 47, 25);
         Graphic.printString(terminal, "-Stamina: " + player.getStamina(), 50, 26);
         Graphic.printString(terminal, "-Health: " + player.getHealth()+" ", 50, 27);
-        Graphic.printString(terminal, "Your weapon:(weapon)", 75, 26);
-        Graphic.printString(terminal, "    +(dmg) to damage", 75, 27);
+        Graphic.printString(terminal, "Your weapon:", 75, 26);
+        Graphic.printString(terminal, player.getBestWeapon().toString()+"to damage", 75, 27);
     }
 }

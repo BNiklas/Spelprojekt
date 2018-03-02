@@ -3,6 +3,7 @@ package GameObject;
 import java.util.ArrayList;
 import java.util.List;
 import Item.Item;
+import Item.Weapon;
 
 public class Character extends GameObject {
     private int speed;
@@ -22,7 +23,17 @@ public class Character extends GameObject {
         inventory = new ArrayList<>();
         isAlive = true;
     }
-
+    public Weapon getBestWeapon(){
+        Weapon weapon = new Weapon();
+        int bestAttackValue = -1;
+        for(Item item : inventory){
+            if(item instanceof Weapon && ((Weapon) item).getAttackValue() > bestAttackValue){
+                weapon = (Weapon) item;
+                bestAttackValue = ((Weapon) item).getAttackValue();
+            }
+        }
+        return weapon;
+    }
 
     protected int getSpeed(){
         return speed;
