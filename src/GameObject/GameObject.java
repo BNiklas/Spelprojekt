@@ -10,18 +10,19 @@ public class GameObject {
     private Graphic graphic;
     private boolean needsDraw = true;
     private boolean traversable;
-    private boolean justMoved;
 
     public GameObject(int x, int y, char look, boolean traversable) {
         this(x, y, look, Terminal.Color.WHITE, traversable);
     }
-    public GameObject(int x, int y, char look, Terminal.Color color, boolean traversable){
+
+    public GameObject(int x, int y, char look, Terminal.Color color, boolean traversable) {
         this.x = xOld = x;
         this.y = yOld = y;
         this.graphic = new Graphic(look, color);
         this.traversable = traversable;
     }
-    public GameObject(){
+
+    public GameObject() {
 
     }
 
@@ -34,11 +35,10 @@ public class GameObject {
     }
 
     public void onLoop() {
-        justMoved = false;
     }
 
     public void onDraw(Terminal terminal) {
-        if(needsDraw) {
+        if (needsDraw) {
             graphic.draw(terminal, this.x, this.y, this.xOld, this.yOld);
             needsDraw = false;
         }
@@ -46,11 +46,9 @@ public class GameObject {
 
     public void onCollide(GameObject object) {
         if (!object.isTraversable()) {
-            if (this.justMoved) {
-                this.x = this.xOld;
-                this.y = this.yOld;
-                this.needsDraw = true;
-            }
+            this.x = this.xOld;
+            this.y = this.yOld;
+            this.needsDraw = true;
         }
     }
 
@@ -64,7 +62,6 @@ public class GameObject {
         this.x += changeX;
         this.y += changeY;
         needsDraw = true;
-        justMoved = true;
     }
 
     public void needsToDraw() {
