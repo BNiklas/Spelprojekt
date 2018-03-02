@@ -20,12 +20,15 @@ public class Room {
         this.player = player;
         this.gameObjects = new ArrayList<>();
         gameObjects.add(player);
+        this.addObjectsToRoom(gameObjects);
+
+    }
+    private void addObjectsToRoom(List<GameObject> gameObjects){
         this.addMonsters(gameObjects);
         this.addRandomItems(gameObjects);
         this.addWalls(gameObjects);
         this.addHills(gameObjects);
         this.addLakes(gameObjects);
-
     }
 
     public static int getScreenWidth() {

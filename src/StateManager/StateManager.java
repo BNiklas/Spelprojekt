@@ -23,7 +23,7 @@ public class StateManager {
 
         this.terminal = terminal;
 
-        changeCurrentState(States.MENU_STATE);
+        changeCurrentState(States.ADVENTURE_STATE);
     }
 
     public void onInput(Key key) {

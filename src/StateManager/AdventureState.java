@@ -19,13 +19,13 @@ public class AdventureState extends State {
 
     @Override
     public void onInput(Key key) {
-        if (key.getKind() == Key.Kind.ArrowDown) {
+        if (key.getKind() == Key.Kind.ArrowDown || key.getCharacter() == 's') {
             player.onMove(0, 1);
-        } else if (key.getKind() == Key.Kind.ArrowUp) {
+        } else if (key.getKind() == Key.Kind.ArrowUp || key.getCharacter() == 'w') {
             player.onMove(0, -1);
-        } else if (key.getKind() == Key.Kind.ArrowLeft) {
+        } else if (key.getKind() == Key.Kind.ArrowLeft || key.getCharacter() == 'a') {
             player.onMove(-1, 0);
-        } else if (key.getKind() == Key.Kind.ArrowRight) {
+        } else if (key.getKind() == Key.Kind.ArrowRight || key.getCharacter() == 'd') {
             player.onMove(1, 0);
         } else  if (key.getCharacter() == ' ') {
             exitInstructions = new StateInstruction(States.MENU_STATE);
