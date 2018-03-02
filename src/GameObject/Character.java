@@ -21,11 +21,11 @@ public class Character extends GameObject {
         health = 15;
         inventory = new ArrayList<>();
     }
-    public Item.Weapon getBestWeapon(){
-        Item.Weapon weapon = new Weapon();
+    public Weapon getBestWeapon(){
+        Weapon weapon = new Weapon();
         int bestAttackValue = -1;
         for(Item item : inventory){
-            if(item instanceof Item.Weapon && ((Weapon) item).getAttackValue() > bestAttackValue){
+            if(item instanceof Weapon && ((Weapon) item).getAttackValue() > bestAttackValue){
                 weapon = (Weapon) item;
                 bestAttackValue = ((Weapon) item).getAttackValue();
             }
