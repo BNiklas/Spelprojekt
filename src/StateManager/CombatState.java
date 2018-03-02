@@ -74,7 +74,7 @@ public class CombatState extends State {
         if (enemy.getHealth()<1)
             Graphic.printString(terminal, "You killed the " + enemy.getType(), 32, 13);
         else if(player.getHealth()<1)
-            Graphic.printString(terminal, "The "+enemy.getType()+" killed you!", 32, 13);
+            Graphic.printString(terminal, "The "+enemy.getType()+" killed you!", 32, 13, Terminal.Color.RED);
     }
 
 

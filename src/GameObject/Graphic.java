@@ -28,12 +28,15 @@ public class Graphic {
     }
 
     public static void printString(Terminal terminal, String input, int x, int y) {
+        printString(terminal, input, x, y, Terminal.Color.WHITE);
+    }
+    public static void printString(Terminal terminal, String input, int x, int y, Terminal.Color color) {
         char[] chars = input.toCharArray();
+        terminal.applyForegroundColor(color);
         for (int i = 0; i < chars.length; i++) {
             terminal.moveCursor(i + x, y);
             terminal.putCharacter(chars[i]);
         }
-
     }
 
     public static void printHealthbar(Terminal terminal, int x, int y, int health) {
