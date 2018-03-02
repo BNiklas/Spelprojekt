@@ -5,18 +5,15 @@ import com.googlecode.lanterna.terminal.Terminal;
 public class GameObject {
     private int x;
     private int y;
-    protected int xOld;
-    protected int yOld;
+    private int xOld;
+    private int yOld;
     private Graphic graphic;
     private boolean needsDraw = true;
     private boolean traversable;
-    protected boolean justMoved;
+    private boolean justMoved;
 
     public GameObject(int x, int y, char look, boolean traversable) {
-        this.x = xOld = x;
-        this.y = yOld = y;
-        this.graphic = new Graphic(look);
-        this.traversable = traversable;
+        this(x, y, look, Terminal.Color.WHITE, traversable);
     }
     public GameObject(int x, int y, char look, Terminal.Color color, boolean traversable){
         this.x = xOld = x;

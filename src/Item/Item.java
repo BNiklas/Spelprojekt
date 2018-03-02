@@ -9,20 +9,11 @@ public abstract class Item extends GameObject {
     private boolean onGround = true;
 
     public Item() {
-        super(0, 0, 'I', true);
-        this.name="";
-        this.value = 0;
+        this(0, 0, 'I', Terminal.Color.WHITE, 0, "");
     }
 
-    public Item(int value, String name) {
-        super(0, 0, 'I', true);
-        setValue(value);
-        this.name = name;
-    }
     public Item(int x, int y, char look, int value, String name) {
-        super(x, y, look, true);
-        this.value = value;
-        this.name = name;
+        this(x, y, look, Terminal.Color.WHITE, value, name);
     }
 
     public Item(int x, int y, char look, Terminal.Color color, int value, String name) {
@@ -30,25 +21,19 @@ public abstract class Item extends GameObject {
         this.value = value;
         this.name = name;
     }
-    public boolean isOnGround(){
+
+    public boolean isOnGround() {
         return onGround;
     }
-    public Item pickUp(){
+
+    public Item pickUp() {
         onGround = false;
         return this;
     }
 
 
-
     public int getValue() {
         return value;
-    }
-
-    private void setValue(int value) {
-        if (value>=0) {
-            this.value = value;
-        }
-        else this.value=0;
     }
 
     public String getName() {
@@ -56,7 +41,7 @@ public abstract class Item extends GameObject {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return name + " Value: " + value;
     }
 }

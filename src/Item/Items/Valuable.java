@@ -13,11 +13,7 @@ public class Valuable extends Item {
             "Bronze piece", "Silver piece", "Ruby", "Diamond", "Gold piece", "Emerald", "Silver plate", "Tanzanite",
             "Lazurite", "Peridot", "Nephrite", "Malachite", "Charoite"));
 
-    private Valuable(int x, int y, char look, int value, String name) {
-        super(x, y, look, value, name);
-    }
-
-    public Valuable(int x, int y, char look, Terminal.Color color, int value, String name) {
+    private Valuable(int x, int y, char look, Terminal.Color color, int value, String name) {
         super(x, y, look, color, value, name);
     }
 
