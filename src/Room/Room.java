@@ -121,4 +121,5 @@ public class Room {
     }
 
     private void addLakes(List<GameObject> gameObjects){ gameObjects.addAll(Lake.getLake()); }
+
 }
