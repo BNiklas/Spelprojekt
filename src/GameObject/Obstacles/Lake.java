@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static GameObject.Helper.getRandomNumberInRange;
+
 public class Lake extends Obstacle {
     public Lake(int x, int y){
         super(x, y, '\u007e', Terminal.Color.BLUE, false);
@@ -23,15 +25,6 @@ public class Lake extends Obstacle {
             }
         }
         return lakes;
-    }
-
-    private static int getRandomNumberInRange(int min, int max) {
-        Random rand = new Random();
-        int randomNum = Integer.MIN_VALUE;
-        while (randomNum < min) {
-            randomNum = rand.nextInt(max);
-        }
-        return randomNum;
     }
 
 }

@@ -42,9 +42,6 @@ public class Graphic {
     public static void printHealthbar(Terminal terminal, int x, int y, int health) {
 
         char charToPrint = '\u2588';
-//        if (health < 10 && health > 0) {
-//            health = 10;
-//        }
 
         for (int i = 0; i < health; i++) {
             terminal.applyForegroundColor(Terminal.Color.GREEN);
