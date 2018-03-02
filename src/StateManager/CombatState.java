@@ -175,7 +175,7 @@ public class CombatState extends State {
         Graphic.printString(terminal, "Player status ", 47, 25);
         Graphic.printString(terminal, "-Stamina: " + player.getStamina(), 50, 26);
         Graphic.printString(terminal, "-Health: " + player.getHealth() + " ", 50, 27);
-        Graphic.printString(terminal, "Health: " + player.getHealth(), 75, 24);
+        Graphic.printString(terminal, "Health: " + player.getHealth() + " ", 75, 24);
         Graphic.printHealthbar(terminal, 75, 25, player.getHealth());
         Graphic.printString(terminal, "Your weapon:", 75, 27);
         Graphic.printString(terminal, player.getBestWeapon().toString() + "to damage", 75, 28);
