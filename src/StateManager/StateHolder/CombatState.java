@@ -175,7 +175,6 @@ public class CombatState extends State {
         }
         //Player stats
         Graphic.printString(terminal, "Health: " + player.getHealth() + " ", TEXT_X_RIGHT, 25);
-//        Graphic.printHealthbar(terminal, 72, 25, player.getHealth());
         Graphic.printString(terminal, "Stamina: " + player.getStamina(), TEXT_X_RIGHT, 26);
     }
 }
