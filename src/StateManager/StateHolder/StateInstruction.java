@@ -1,19 +1,17 @@
-package StateManager;
+package StateManager.StateHolder;
 
 import GameObject.GameObject;
 
-import java.util.List;
-
 public class StateInstruction {
     private boolean changeState;
-    private States newStateID;
+    private StateManager.States newStateID;
     private GameObject[] gameObjects;
 
     public boolean getChangeState() {
         return changeState;
     }
 
-    public States getNewStateID() {
+    public StateManager.States getNewStateID() {
         return newStateID;
     }
 
@@ -21,13 +19,13 @@ public class StateInstruction {
         return gameObjects;
     }
 
-    public StateInstruction(States newState, GameObject[] gameObjects) {
+    public StateInstruction(StateManager.States newState, GameObject[] gameObjects) {
         this.changeState = true;
         this.newStateID = newState;
         this.gameObjects = gameObjects;
     }
 
-    StateInstruction(States newState) {
+    StateInstruction(StateManager.States newState) {
         this.changeState = true;
         this.newStateID = newState;
     }

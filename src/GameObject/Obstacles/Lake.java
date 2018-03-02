@@ -1,4 +1,4 @@
-package GameObject;
+package GameObject.Obstacles;
 
 import Room.Room;
 import com.googlecode.lanterna.terminal.Terminal;

@@ -1,4 +1,4 @@
-package StateManager;
+package StateManager.StateHolder;
 
 import Room.*;
 import com.googlecode.lanterna.input.Key;

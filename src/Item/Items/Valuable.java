@@ -1,5 +1,6 @@
-package Item;
+package Item.Items;
 
+import Item.Item;
 import Room.*;
 import com.googlecode.lanterna.terminal.Terminal;
 import GameObject.Helper;

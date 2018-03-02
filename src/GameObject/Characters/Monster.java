@@ -1,8 +1,10 @@
-package GameObject;
+package GameObject.Characters;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import GameObject.GameObject;
 import Room.Room;
 
 public class Monster extends Chaser {

@@ -1,7 +1,9 @@
-package StateManager;
+package StateManager.StateHolder;
 
 import GameObject.*;
+import GameObject.Characters.Player;
 import Room.*;
+import StateManager.*;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.input.Key;
 import Item.*;

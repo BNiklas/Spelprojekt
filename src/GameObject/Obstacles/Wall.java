@@ -1,4 +1,4 @@
-package GameObject;
+package GameObject.Obstacles;
 
 import Room.Room;
 import com.googlecode.lanterna.terminal.Terminal;
@@ -6,7 +6,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Wall extends Obstacle{
+public class Wall extends Obstacle {
     public Wall(int x, int y) {
         super(x, y, '\u2588', Terminal.Color.CYAN, false);
         this.needsToDraw();

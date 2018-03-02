@@ -1,11 +1,12 @@
-package StateManager;
+package StateManager.StateHolder;
 
+import GameObject.Characters.Monster;
+import GameObject.Characters.Player;
+import StateManager.*;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.terminal.Terminal;
 import GameObject.*;
-import jdk.nashorn.api.tree.Tree;
 
-import java.lang.Character;
 import java.util.Random;
 
 public class CombatState extends State {

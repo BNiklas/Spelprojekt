@@ -1,4 +1,6 @@
-package GameObject;
+package GameObject.Characters;
+
+import GameObject.GameObject;
 
 abstract public class Chaser extends Character {
     GameObject target;

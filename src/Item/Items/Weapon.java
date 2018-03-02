@@ -1,5 +1,6 @@
-package Item;
+package Item.Items;
 
+import Item.Item;
 import Room.Room;
 import java.util.ArrayList;
 import java.util.List;

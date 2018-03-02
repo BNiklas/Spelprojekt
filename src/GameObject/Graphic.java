@@ -6,11 +6,11 @@ public class Graphic {
     private char graphic;
     private Terminal.Color color;
 
-    Graphic(char graphic) {
+    public Graphic(char graphic) {
         this.graphic = graphic;
         this.color = Terminal.Color.WHITE;
     }
-    Graphic(char graphic, Terminal.Color color){
+    public Graphic(char graphic, Terminal.Color color){
         this.graphic = graphic;
         this.color = color;
     }
@@ -22,7 +22,7 @@ public class Graphic {
         terminal.putCharacter(graphic);
     }
 
-    static void erase(Terminal terminal, int x, int y) {
+    public static void erase(Terminal terminal, int x, int y) {
         terminal.moveCursor(x, y);
         terminal.putCharacter(' ');
     }

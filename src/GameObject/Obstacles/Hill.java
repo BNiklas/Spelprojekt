@@ -1,5 +1,6 @@
-package GameObject;
+package GameObject.Obstacles;
 
+import GameObject.*;
 import Room.Room;
 import com.googlecode.lanterna.terminal.Terminal;
 

@@ -1,8 +1,8 @@
 package StateManager;
 
 import GameObject.GameObject;
-import GameObject.Monster;
-import GameObject.Player;
+import GameObject.Characters.Player;
+import StateManager.StateHolder.*;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.terminal.Terminal;
 

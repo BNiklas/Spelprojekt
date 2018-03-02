@@ -1,9 +1,15 @@
 package Room;
 
 import GameObject.*;
+import GameObject.Characters.Chaser;
+import GameObject.Characters.Monster;
+import GameObject.Characters.Player;
+import GameObject.Obstacles.Hill;
+import GameObject.Obstacles.Lake;
+import GameObject.Obstacles.Wall;
 import Item.Item;
-import Item.Valuable;
-import Item.Weapon;
+import Item.Items.Valuable;
+import Item.Items.Weapon;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.util.ArrayList;

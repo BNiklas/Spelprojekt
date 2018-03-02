@@ -1,9 +1,11 @@
-package GameObject;
+package GameObject.Characters;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import GameObject.*;
 import Item.Item;
-import Item.Weapon;
+import Item.Items.Weapon;
 import com.googlecode.lanterna.terminal.Terminal;
 
 public class Character extends GameObject {

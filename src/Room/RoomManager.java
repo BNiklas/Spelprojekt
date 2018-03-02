@@ -2,9 +2,10 @@ package Room;
 
 import GameObject.Door;
 import GameObject.GameObject;
-import GameObject.Monster;
-import GameObject.Player;
+import GameObject.Characters.Monster;
+import GameObject.Characters.Player;
 import StateManager.*;
+import StateManager.StateHolder.StateInstruction;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.util.ArrayList;

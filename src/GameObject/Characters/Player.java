@@ -1,5 +1,6 @@
-package GameObject;
+package GameObject.Characters;
 
+import GameObject.GameObject;
 import Item.Item;
 
 public class Player extends Character {

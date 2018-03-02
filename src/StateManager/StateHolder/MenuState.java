@@ -1,6 +1,7 @@
-package StateManager;
+package StateManager.StateHolder;
 
 import GameObject.Graphic;
+import StateManager.States;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.terminal.Terminal;
 
