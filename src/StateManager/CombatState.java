@@ -90,7 +90,8 @@ public class CombatState extends State {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            exitInstructions = new StateInstruction(States.GAMEOVER_STATE);
+            GameObject[] temp = {player};
+            exitInstructions = new StateInstruction(States.GAMEOVER_STATE, temp);
             hasExitInstructions = true;
         }
     }

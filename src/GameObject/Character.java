@@ -59,6 +59,14 @@ public class Character extends GameObject {
         }
     }
 
+    public int getInventoryValue() {
+        int totalValue = 0;
+        for (Item item : inventory) {
+            totalValue += item.getValue();
+        }
+        return totalValue;
+    }
+
     public int getHealth() {
         return health;
     }

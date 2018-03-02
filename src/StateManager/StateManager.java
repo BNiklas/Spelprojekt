@@ -11,11 +11,7 @@ public class StateManager {
     private State menuState = new MenuState();
     private State adventureState = new AdventureState();
     private State combatState = new CombatState();
-    private State gameoverState = new GameoverState();
     private State currentState;
-
-    private Player player;
-    private Monster monster;
 
     private Terminal terminal;
 
@@ -50,6 +46,12 @@ public class StateManager {
                 return;
             }
 
+            if(instruction.getNewStateID() == States.GAMEOVER_STATE) {
+                exitState();
+                enterState(new GameoverState((Player) instruction.getGameObjects()[0]));
+                return;
+            }
+
             if(instruction.getChangeState()) {
                 changeCurrentState(instruction.getNewStateID());
             }
@@ -70,10 +72,12 @@ public class StateManager {
                 enterState(adventureState);
                 break;
             case COMBAT_STATE:
+                // should never happen
                 enterState(new CombatState());
                 break;
             case GAMEOVER_STATE:
-                enterState(gameoverState);
+                // should never happen
+                enterState(new GameoverState(null));
                 break;
         }
     }
