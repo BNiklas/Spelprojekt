@@ -17,9 +17,10 @@ public class Character extends GameObject {
     protected Character(int x, int y, char look, boolean traversable) {
         super(x, y, look, traversable);
         stamina = 9;
-        health = 9;
+        health = 15;
         inventory = new ArrayList<>();
     }
+
 
     protected int getSpeed(){
         return speed;

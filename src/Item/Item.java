@@ -54,6 +54,7 @@ public abstract class Item extends GameObject {
         return name;
     }
 
+    @Override
     public String toString(){
         return name + " Value: " + value;
     }

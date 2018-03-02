@@ -65,19 +65,7 @@ public class CombatState extends State {
     @Override
     public void onDraw(Terminal terminal) {
         if(enemy.getHealth()>0 && player.getHealth()>0) {
-            Graphic.printString(terminal, "You have encountered a " + enemy.getType(), 1, 1);
-            Graphic.printString(terminal, "-Stamina: " + enemy.getStamina(), 3, 2);
-            Graphic.printString(terminal, "-Health: " + enemy.getHealth(), 3, 3);
-
-            Graphic.printString(terminal, "How hard will you hit?: " + playerAttack, 32, 13);
-            if(enemyAttack!=-1) {
-                Graphic.printString(terminal, "Enemy hits for... " + enemyAttack, 32, 14);
-                Graphic.printString(terminal, "Enemy hits for... " + enemyAttack, 32, 14);
-            }
-
-            Graphic.printString(terminal, "Player status ", 40, 25);
-            Graphic.printString(terminal, "-Stamina: " + player.getStamina(), 43, 26);
-            Graphic.printString(terminal, "-Health: " + player.getHealth(), 43, 27);
+            printCombatText(terminal);
         }
         else if(!clear) {
             terminal.clearScreen();
@@ -104,6 +92,8 @@ public class CombatState extends State {
             hasExitInstructions = true;
         }
     }
+
+
     private void updateHealth() {
         if(playerAttack > enemyAttack)
             enemy.setHealth(enemy.getHealth()-Math.abs(dmgArray[playerAttack][enemyAttack]));
@@ -129,5 +119,48 @@ public class CombatState extends State {
     @Override
     public void exit() {
 
+    }
+    private void printCombatText(Terminal terminal) {
+        //Tutorial
+        Graphic.printString(terminal, "HOW TO PLAY:", 72, 1);
+        Graphic.printString(terminal, "The highest attackvalue", 72, 3);
+        Graphic.printString(terminal, "wins the round and deals", 72, 4);
+        Graphic.printString(terminal, "damage to their opponent.", 72, 5);
+        Graphic.printString(terminal, "It is over once you or the", 72, 7);
+        Graphic.printString(terminal, "enemys health reaches zero", 72, 8);
+        Graphic.printString(terminal, "-Chose attack value", 72, 12);
+        Graphic.printString(terminal, "-Press Enter to lock in", 72, 13);
+        Graphic.printString(terminal, "To regain stamina, chose", 72, 16);
+        Graphic.printString(terminal, "\"Defend\", you can't deal", 72, 17);
+        Graphic.printString(terminal, "damage but will take ", 72, 18);
+        Graphic.printString(terminal, "minimum damage yourself.", 72, 19);
+
+        //Extra wall
+        terminal.applyForegroundColor(Terminal.Color.CYAN);
+        for(int i=70; i<100; i++){
+            terminal.moveCursor(i,23);
+            terminal.putCharacter('\u2588');
+        }
+        terminal.applyForegroundColor(Terminal.Color.WHITE);
+
+        //Enemy stats
+        Graphic.printString(terminal, "You have encountered a " + enemy.getType(), 4, 2);
+        Graphic.printString(terminal, "-Stamina: " + enemy.getStamina(), 6, 3);
+        Graphic.printString(terminal, "-Health: " + enemy.getHealth()+" ", 6, 4);
+        //Combat texts
+        if(playerAttack==0)
+            Graphic.printString(terminal, "You will Defend this turn!", 27, 13);
+        else
+            Graphic.printString(terminal, "How hard will you hit?:  " + playerAttack, 27, 13);
+        if(enemyAttack!=-1) {
+            Graphic.printString(terminal, "Enemy hits for... " + enemyAttack, 27, 14);
+            Graphic.printString(terminal, "Enemy hits for... " + enemyAttack, 27, 14);
+        }
+        //Player stats
+        Graphic.printString(terminal, "Player status ", 47, 25);
+        Graphic.printString(terminal, "-Stamina: " + player.getStamina(), 50, 26);
+        Graphic.printString(terminal, "-Health: " + player.getHealth()+" ", 50, 27);
+        Graphic.printString(terminal, "Your weapon:(weapon)", 75, 26);
+        Graphic.printString(terminal, "    +(dmg) to damage", 75, 27);
     }
 }
