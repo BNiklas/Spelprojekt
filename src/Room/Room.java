@@ -1,15 +1,10 @@
 package Room;
 
 import GameObject.*;
-import GameObject.Characters.Chaser;
-import GameObject.Characters.Monster;
-import GameObject.Characters.Player;
-import GameObject.Obstacles.Hill;
-import GameObject.Obstacles.Lake;
-import GameObject.Obstacles.Wall;
+import GameObject.Characters.*;
+import GameObject.Obstacles.*;
 import Item.Item;
-import Item.Items.Valuable;
-import Item.Items.Weapon;
+import Item.Items.*;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.util.ArrayList;
@@ -61,6 +56,7 @@ public class Room {
 
     public void onLoop() {
         List<GameObject> objectsToKill = new ArrayList<>();
+
         for (GameObject gameObject : gameObjects) {
             if (gameObject instanceof Chaser) {
                 ((Chaser) gameObject).updateChaseTarget(player);
