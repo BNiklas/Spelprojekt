@@ -29,8 +29,4 @@ public class StateInstruction {
         this.changeState = true;
         this.newStateID = newState;
     }
-
-    StateInstruction() {
-        this.changeState = false;
-    }
 }

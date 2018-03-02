@@ -32,7 +32,7 @@ public class CombatState extends State {
         ((Player) player).setStamina(9);
         this.enemy = (Monster) monster;
     }
-
+    
     @Override
     public void onInput(Key key) {
         switch (key.getKind()) {
@@ -108,8 +108,6 @@ public class CombatState extends State {
     public void onLoop() {
 
     }
-
-
     private void printCombatText(Terminal terminal) {
         //Tutorial
         Graphic.printString(terminal, "HOW TO PLAY:", 72, 1);
