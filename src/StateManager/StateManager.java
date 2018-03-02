@@ -22,7 +22,7 @@ public class StateManager {
         combatState.onInit();
 
         this.terminal = terminal;
-        changeCurrentState(States.MENU_STATE);
+        changeCurrentState(States.COMBAT_STATE);
     }
 
     public void onInput(Key key) {
