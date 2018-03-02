@@ -31,6 +31,9 @@ public class AdventureState extends State {
             hasExitInstructions = true;
         }
     }
+    private void printAdventureText(){
+
+    }
 
     @Override
     public void onLoop() {

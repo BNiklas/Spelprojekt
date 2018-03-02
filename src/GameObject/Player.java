@@ -30,7 +30,7 @@ public class Player extends Character {
     public void onCollide(GameObject object) {
         super.onCollide(object);
         if (object instanceof Item) {
-            takeItem((Item) object);
+            this.inventory.add(((Item) object).pickUp());
         }
     }
 }

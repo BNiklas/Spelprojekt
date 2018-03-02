@@ -6,13 +6,12 @@ import com.googlecode.lanterna.terminal.Terminal;
 public abstract class Item extends GameObject {
     private int value;
     private String name;
-    private boolean onGround;
+    private boolean onGround = true;
 
     public Item() {
         super(0, 0, 'I', true);
         this.name="";
         this.value = 0;
-        onGround = false;
     }
 
     public Item(int value, String name) {
@@ -20,13 +19,6 @@ public abstract class Item extends GameObject {
         setValue(value);
         this.name = name;
     }
-    public boolean isOnGround(){
-        return onGround;
-    }
-    public void pickUp(){
-        onGround = false;
-    }
-
     public Item(int x, int y, char look, int value, String name) {
         super(x, y, look, true);
         this.value = value;
@@ -38,6 +30,15 @@ public abstract class Item extends GameObject {
         this.value = value;
         this.name = name;
     }
+    public boolean isOnGround(){
+        return onGround;
+    }
+    public Item pickUp(){
+        onGround = false;
+        return this;
+    }
+
+
 
     public int getValue() {
         return value;

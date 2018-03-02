@@ -10,7 +10,7 @@ public class Character extends GameObject {
     private int speed;
     private int health;
     private int stamina;
-    private List<Item> inventory;
+    protected List<Item> inventory;
     private boolean isAlive;
 
     protected Character(int x, int y, char look) {
@@ -50,10 +50,6 @@ public class Character extends GameObject {
     }
     protected List<Item> getInventory(){
         return inventory;
-    }
-    protected void takeItem(Item item){
-        inventory.add(item);
-        item.pickUp();
     }
     protected void setSpeed(int speed){
         if(speed < 0){
