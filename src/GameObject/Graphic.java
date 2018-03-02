@@ -6,11 +6,7 @@ public class Graphic {
     private char graphic;
     private Terminal.Color color;
 
-    public Graphic(char graphic) {
-        this.graphic = graphic;
-        this.color = Terminal.Color.WHITE;
-    }
-    public Graphic(char graphic, Terminal.Color color){
+    Graphic(char graphic, Terminal.Color color){
         this.graphic = graphic;
         this.color = color;
     }
