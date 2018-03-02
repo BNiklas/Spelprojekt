@@ -131,25 +131,17 @@ public class CombatState extends State {
             Graphic.printString(terminal, "minimum damage yourself.", TEXT_X_RIGHT, 19);
 
             //Add walls
-            //terminal.applyForegroundColor(Terminal.Color.CYAN);
             for (int i = 70; i < 100; i++) {
                 Graphic.printString(terminal,"\u2588",i,23, Terminal.Color.CYAN);
-                /*terminal.moveCursor(i, 23);
-                terminal.putCharacter('\u2588');*/
             }
             for (int x = 0; x <= 70; x++) {
-                terminal.moveCursor(x, 29);
-                terminal.putCharacter('\u2588');
-                terminal.moveCursor(x, 0);
-                terminal.putCharacter('\u2588');
+                Graphic.printString(terminal,"\u2588",x,29, Terminal.Color.CYAN);
+                Graphic.printString(terminal,"\u2588",x,0, Terminal.Color.CYAN);
             }
             for (int y = 1; y < 29; y++) {
-                terminal.moveCursor(70, y);
-                terminal.putCharacter('\u2588');
-                terminal.moveCursor(0, y);
-                terminal.putCharacter('\u2588');
+                Graphic.printString(terminal,"\u2588",y,70, Terminal.Color.CYAN);
+                Graphic.printString(terminal,"\u2588",70,y, Terminal.Color.CYAN);
             }
-            //terminal.applyForegroundColor(Terminal.Color.WHITE);
 
             //Enemy stats
             Graphic.printString(terminal, "You have encountered a " + enemy.getType(), 4, 2);
