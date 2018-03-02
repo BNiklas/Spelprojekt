@@ -8,7 +8,7 @@ public class GameObject {
     protected int xOld;
     protected int yOld;
     private Graphic graphic;
-    private boolean needsDraw = false;
+    private boolean needsDraw = true;
     private boolean traversable;
     protected boolean justMoved;
 

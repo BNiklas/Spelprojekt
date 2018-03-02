@@ -9,7 +9,8 @@ public class Monster extends Chaser {
     String type;
     String[] types={"Skeleton","Goblin"};
     public Monster(int x, int y, char look) {
-        super(x, y, look);
+        super(x, y, look, true);
+
         Random rand = new Random();
         this.type=types[rand.nextInt(2)];
         setSpeed(1);
@@ -30,6 +31,9 @@ public class Monster extends Chaser {
 
     private boolean lookFor(GameObject object) {
         int searchRange = 5;
+        if (object == null) {
+            return false;
+        }
         if (Math.abs(this.getX() - object.getX()) < searchRange && Math.abs(this.getY() - object.getY()) < searchRange) {
             return true;
         }
