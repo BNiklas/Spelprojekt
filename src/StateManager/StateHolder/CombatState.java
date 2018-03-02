@@ -28,7 +28,8 @@ public class CombatState extends State {
             {2, 4, 3, 3, 2, 2, 1, 1, 0, 1},
             {2, 5, 4, 3, 3, 2, 2, 1, 1, 0}};
 
-    public void setFighters(GameObject player, GameObject monster) {
+    public CombatState(GameObject player, GameObject monster) {
+        super();
         this.player = (Player) player;
         ((Player) player).setStamina(9);
         this.enemy = (Monster) monster;
