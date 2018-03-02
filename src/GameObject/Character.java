@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import Item.Item;
 import Item.Weapon;
+import com.googlecode.lanterna.terminal.Terminal;
 
 public class Character extends GameObject {
     private int speed;
@@ -33,6 +34,15 @@ public class Character extends GameObject {
             }
         }
         return weapon;
+    }
+
+    @Override
+    public void onDraw(Terminal terminal) {
+        if(isAlive) {
+            super.onDraw(terminal);
+        } else {
+            Graphic.erase(terminal, this.getX(), this.getY());
+        }
     }
 
     protected int getSpeed(){

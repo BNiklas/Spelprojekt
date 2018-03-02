@@ -22,7 +22,7 @@ public class Graphic {
         terminal.putCharacter(graphic);
     }
 
-    private void erase(Terminal terminal, int x, int y) {
+    static void erase(Terminal terminal, int x, int y) {
         terminal.moveCursor(x, y);
         terminal.putCharacter(' ');
     }
