@@ -20,20 +20,20 @@ public class Room {
 
     public Room() {
         this.gameObjects = new ArrayList<>();
-        this.addObjectsToRoom(gameObjects);
-
+        this.addObjectsToRoom();
     }
-    private void addObjectsToRoom(List<GameObject> gameObjects){
+
+    private void addObjectsToRoom() {
         Random rand = new Random();
         gameObjects.add(new Door(rand.nextInt(SCREEN_WIDTH - 2) + 1, rand.nextInt(SCREEN_HEIGHT - 2) + 1));
-        this.addMonsters(gameObjects);
-        this.addRandomItems(gameObjects);
-        this.addWalls(gameObjects);
-        this.addHills(gameObjects);
-        this.addLakes(gameObjects);
-        this.addLakes(gameObjects);
-        this.addHills(gameObjects);
-        this.addHills(gameObjects);
+        gameObjects.addAll(ContentGenerator.getRandomAmountOfMonsters(4));
+        gameObjects.addAll(ContentGenerator.getRandomValuables(6));
+        gameObjects.addAll(ContentGenerator.getRandomWeapons(2));
+        gameObjects.addAll(ContentGenerator.getWalls());
+        gameObjects.addAll(ContentGenerator.getHills());
+        gameObjects.addAll(ContentGenerator.getHills());
+        gameObjects.addAll(ContentGenerator.getLake());
+        gameObjects.addAll(ContentGenerator.getLake());
     }
 
     public void addBackPortal(Room oldRoom) {
@@ -53,6 +53,7 @@ public class Room {
 
     public void onLoop() {
         List<GameObject> objectsToKill = new ArrayList<>();
+
         for (GameObject gameObject : gameObjects) {
             if (gameObject instanceof Chaser) {
                 ((Chaser) gameObject).updateChaseTarget(player);
@@ -94,11 +95,11 @@ public class Room {
                 }
                 if (gameObject.getX() == innerObject.getX() && gameObject.getY() == innerObject.getY()) {
                     for (Collision collision : collisions) {
-                        if(collision.contains(gameObject, innerObject)) {
+                        if (collision.contains(gameObject, innerObject)) {
                             alreadyExists = true;
                         }
                     }
-                    if(!alreadyExists) {
+                    if (!alreadyExists) {
                         collisions.add(new Collision(gameObject, innerObject));
                     }
                 }
@@ -119,23 +120,5 @@ public class Room {
         this.player = null;
         return temp;
     }
-
-    private void addRandomItems(List<GameObject> gameObjects){
-        gameObjects.addAll(ContentGenerator.getRandomValuables(6));
-        gameObjects.addAll(ContentGenerator.getRandomWeapons(2));
-    }
-    private void addMonsters(List<GameObject> gameObjects){
-        gameObjects.addAll(ContentGenerator.getRandomAmountOfMonsters(4));
-    }
-
-    private void addHills(List<GameObject> gameObjects){
-        gameObjects.addAll(ContentGenerator.getHills());
-    }
-
-    private void addWalls(List<GameObject> gameObjects){
-        gameObjects.addAll(ContentGenerator.getWalls());
-    }
-
-    private void addLakes(List<GameObject> gameObjects){ gameObjects.addAll(ContentGenerator.getLake()); }
 
 }
