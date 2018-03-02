@@ -1,6 +1,7 @@
 package Room;
 
 import GameObject.*;
+import Item.Item;
 import Item.Valuable;
 import Item.Weapon;
 import com.googlecode.lanterna.terminal.Terminal;
@@ -50,13 +51,24 @@ public class Room {
 
 
     public void onLoop() {
+        List<GameObject> objectsToKill = new ArrayList<>();
         for (GameObject gameObject : gameObjects) {
             if (gameObject instanceof Chaser) {
                 ((Chaser) gameObject).updateChaseTarget(player);
             }
+            if (gameObject instanceof Monster) {
+                if (!((Monster) gameObject).isAlive()) {
+                    objectsToKill.add(gameObject);
+                }
+            } else if (gameObject instanceof Item) {
+                if (!((Item) gameObject).isOnGround()) {
+                    objectsToKill.add(gameObject);
+                }
+            }
 
             gameObject.onLoop();
         }
+        gameObjects.removeAll(objectsToKill);
     }
 
     public void onDraw(Terminal terminal) {

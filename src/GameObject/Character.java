@@ -9,6 +9,7 @@ public class Character extends GameObject {
     private int health;
     private int stamina;
     private List<Item> inventory;
+    private boolean isAlive;
 
     protected Character(int x, int y, char look) {
         this(x, y, look, false);
@@ -19,6 +20,7 @@ public class Character extends GameObject {
         stamina = 9;
         health = 15;
         inventory = new ArrayList<>();
+        isAlive = true;
     }
 
 
@@ -51,5 +53,13 @@ public class Character extends GameObject {
     }
     public void setStamina(int stamina) {
         this.stamina = stamina;
+    }
+
+    public void kill() {
+        isAlive = false;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
     }
 }

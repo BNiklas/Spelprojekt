@@ -72,6 +72,7 @@ public class CombatState extends State {
             clear=true;
         }
         if (enemy.getHealth()<1) {
+            enemy.kill();
             Graphic.printString(terminal, "You killed the " + enemy.getType(), 32, 13);
             try {
                 Thread.sleep(1000);
@@ -82,6 +83,7 @@ public class CombatState extends State {
             hasExitInstructions = true;
         }
         else if(player.getHealth()<1) {
+            player.kill();
             Graphic.printString(terminal, "The " + enemy.getType() + " killed you!", 32, 13);
             try {
                 Thread.sleep(1000);
