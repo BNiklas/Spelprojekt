@@ -33,6 +33,7 @@ public class Graphic {
             terminal.moveCursor(i + x, y);
             terminal.putCharacter(chars[i]);
         }
+        terminal.applyForegroundColor(Terminal.Color.WHITE);
     }
 
     public static void printHealthbar(Terminal terminal, int x, int y, int health) {
