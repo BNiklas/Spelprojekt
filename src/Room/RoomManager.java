@@ -8,24 +8,19 @@ import StateManager.*;
 import StateManager.StateHolder.StateInstruction;
 import com.googlecode.lanterna.terminal.Terminal;
 
-import java.util.ArrayList;
 import java.util.List;
-
 
 public class RoomManager {
 
-    private List<Room> rooms;
     private Room currentRoom;
     private boolean needsClean = false;
 
     public StateInstruction instructionsToRelay = null;
 
     public RoomManager(Player player) {
-        rooms  = new ArrayList<>();
         currentRoom = new Room();
         currentRoom.wantsBackPortal = false;
         currentRoom.onEnter(player);
-        rooms.add(currentRoom);
     }
 
     public void onLoop() {
@@ -35,16 +30,22 @@ public class RoomManager {
 
     private void checkCollisions() {
         List<Collision> collisions = currentRoom.checkCollisions();
+
         for (Collision collision : collisions) {
-            collision.alert();
-            if (collision.getObject1() instanceof Player && collision.getObject2() instanceof Door) {
-                swapRoom(((Door) collision.getObject2()).getRoom());
-            } else if (collision.getObject1() instanceof Door && collision.getObject2() instanceof Player) {
-                swapRoom(((Door) collision.getObject1()).getRoom());
-            } else if (collision.getObject1() instanceof Player && collision.getObject2() instanceof Monster) {
-                instructionsToRelay = new StateInstruction(States.COMBAT_STATE, new GameObject[] {collision.getObject1(), collision.getObject2()});
-            } else if (collision.getObject1() instanceof Monster && collision.getObject2() instanceof Player) {
-                instructionsToRelay = new StateInstruction(States.COMBAT_STATE, new GameObject[] {collision.getObject2(), collision.getObject1()});
+            collision.alertObjects();
+
+            GameObject collidedObjectOne = collision.getObject1();
+            GameObject collidedObjectTwo = collision.getObject2();
+
+            // check if player collided with door or monster and then handle it
+            if (collidedObjectOne instanceof Player && collidedObjectTwo instanceof Door) {
+                swapRoom(((Door) collidedObjectTwo).getRoom());
+            } else if (collidedObjectOne instanceof Door && collidedObjectTwo instanceof Player) {
+                swapRoom(((Door) collidedObjectOne).getRoom());
+            } else if (collidedObjectOne instanceof Player && collidedObjectTwo instanceof Monster) {
+                instructionsToRelay = new StateInstruction(States.COMBAT_STATE, new GameObject[]{collidedObjectOne, collidedObjectTwo});
+            } else if (collidedObjectOne instanceof Monster && collidedObjectTwo instanceof Player) {
+                instructionsToRelay = new StateInstruction(States.COMBAT_STATE, new GameObject[]{collidedObjectTwo, collidedObjectOne});
             }
         }
     }

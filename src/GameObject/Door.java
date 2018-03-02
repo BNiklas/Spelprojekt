@@ -11,10 +11,9 @@ public class Door extends GameObject {
         this.room = room;
     }
 
-    public Door(int x, int y, Room room) {
+    private Door(int x, int y, Room room) {
         this(x, y, Terminal.Color.RED, room);
     }
-
 
     @Override
     public void onLoop() {
