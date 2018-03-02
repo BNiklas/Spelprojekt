@@ -143,6 +143,18 @@ public class CombatState extends State {
             terminal.moveCursor(i, 23);
             terminal.putCharacter('\u2588');
         }
+        for(int x = 0; x <= 70; x++){
+            terminal.moveCursor(x, 29);
+            terminal.putCharacter('\u2588');
+            terminal.moveCursor(x, 0);
+            terminal.putCharacter('\u2588');
+        }
+        for(int y = 1; y < 29; y++){
+            terminal.moveCursor(70, y);
+            terminal.putCharacter('\u2588');
+            terminal.moveCursor(0, y);
+            terminal.putCharacter('\u2588');
+        }
         terminal.applyForegroundColor(Terminal.Color.WHITE);
 
         //Enemy stats
