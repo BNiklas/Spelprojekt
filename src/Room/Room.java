@@ -21,7 +21,6 @@ public class Room {
 
     public Room() {
         this.gameObjects = new ArrayList<>();
-        gameObjects.add(player);
         this.addObjectsToRoom(gameObjects);
 
     }

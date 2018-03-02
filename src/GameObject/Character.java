@@ -21,6 +21,7 @@ public class Character extends GameObject {
         inventory = new ArrayList<>();
     }
 
+
     protected int getSpeed(){
         return speed;
     }

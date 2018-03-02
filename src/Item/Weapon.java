@@ -23,6 +23,9 @@ public class Weapon extends Item {
         super(x, y, look, value, name);
         this.attackValue = attackValue;
     }
+    public int getAttackValue(){
+        return attackValue;
+    }
 
     public static List<Weapon> getRandomWeapons(int bound) {
         ArrayList<Weapon> valuables = new ArrayList<>();
@@ -32,8 +35,12 @@ public class Weapon extends Item {
         for (int i = rand.nextInt(bound); i < bound; i++) {
             valuables.add(new Weapon(Helper.getRandomNumberInRange(padding, (Room.getScreenWidth() - padding)),
                     Helper.getRandomNumberInRange(padding, (Room.getScreenHeight() - padding)), '\u2020',
-                    rand.nextInt(30), "Weapon", rand.nextInt(10)));
+                    rand.nextInt(30), "Sword", rand.nextInt(10)));
         }
         return valuables;
+    }
+    @Override
+    public String toString(){
+        return "Sword" + "( +" + getAttackValue() + " )";
     }
 }

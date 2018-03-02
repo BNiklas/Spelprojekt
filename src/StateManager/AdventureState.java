@@ -12,7 +12,7 @@ public class AdventureState extends State {
 
     @Override
     public void onInit() {
-        player = new Player(5, 5, 'P');
+        player = new Player(5, 5, '\u263b');
         rooms = new RoomManager(player);
     }
 
