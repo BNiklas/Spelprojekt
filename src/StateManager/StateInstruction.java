@@ -4,10 +4,10 @@ import GameObject.GameObject;
 
 import java.util.List;
 
-class StateInstruction {
+public class StateInstruction {
     private boolean changeState;
     private States newStateID;
-    private List<GameObject> gameObjects;
+    private GameObject[] gameObjects;
 
     public boolean getChangeState() {
         return changeState;
@@ -17,11 +17,11 @@ class StateInstruction {
         return newStateID;
     }
 
-    public List<GameObject> getGameObjects() {
+    public GameObject[] getGameObjects() {
         return gameObjects;
     }
 
-    StateInstruction(States newState, List<GameObject> gameObjects) {
+    public StateInstruction(States newState, GameObject[] gameObjects) {
         this.changeState = true;
         this.newStateID = newState;
         this.gameObjects = gameObjects;

@@ -1,17 +1,23 @@
 package Room;
 
 import GameObject.Door;
+import GameObject.GameObject;
+import GameObject.Monster;
 import GameObject.Player;
+import StateManager.*;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class RoomManager {
 
     private List<Room> rooms;
     private Room currentRoom;
     private boolean needsClean = false;
+
+    public StateInstruction instructionsToRelay = null;
 
     public RoomManager(Player player) {
         rooms  = new ArrayList<>();
@@ -34,6 +40,10 @@ public class RoomManager {
                 swapRoom(((Door) collision.getObject2()).getRoom());
             } else if (collision.getObject1() instanceof Door && collision.getObject2() instanceof Player) {
                 swapRoom(((Door) collision.getObject1()).getRoom());
+            } else if (collision.getObject1() instanceof Player && collision.getObject2() instanceof Monster) {
+                instructionsToRelay = new StateInstruction(States.COMBAT_STATE, new GameObject[] {collision.getObject1(), collision.getObject2()});
+            } else if (collision.getObject1() instanceof Monster && collision.getObject2() instanceof Player) {
+                instructionsToRelay = new StateInstruction(States.COMBAT_STATE, new GameObject[] {collision.getObject2(), collision.getObject1()});
             }
         }
     }

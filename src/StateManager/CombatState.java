@@ -33,9 +33,7 @@ public class CombatState extends State {
 
     @Override
     public void onInit() {
-        // for testing
-        this.player = new Player(1, 1, 'a');
-        this.enemy = new Monster(1, 1, 'a');
+
     }
 
     @Override
@@ -87,11 +85,21 @@ public class CombatState extends State {
         }
         if (enemy.getHealth()<1) {
             Graphic.printString(terminal, "You killed the " + enemy.getType(), 32, 13);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             exitInstructions = new StateInstruction(States.ADVENTURE_STATE);
             hasExitInstructions = true;
         }
         else if(player.getHealth()<1) {
             Graphic.printString(terminal, "The " + enemy.getType() + " killed you!", 32, 13);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             exitInstructions = new StateInstruction(States.GAMEOVER_STATE);
             hasExitInstructions = true;
         }
